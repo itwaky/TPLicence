@@ -1,5 +1,6 @@
 import tkdraw.basic as graph
 import random
+import Labyrinthe
 
 #-------------------------1
 
@@ -166,4 +167,15 @@ def damier(lst, taille):
 	graph.wait()
 
 
-damier(lstlst, 10)
+#damier(lstlst, 10)
+
+
+
+#---------------------------------------------4
+
+
+
+
+laby = Labyrinthe.creer(11,15)
+for ligne in laby:
+	print(ligne)
