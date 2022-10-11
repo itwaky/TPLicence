@@ -88,4 +88,82 @@ def dessine_bandes1(lst, hauteur, largeur_bandes):
 	graph.wait()
 
 
-dessine_bandes1(lst, 50, 10)
+#dessine_bandes1(lst, 50, 10)
+
+
+
+#--------------------------deuxième stratégie----exo2
+
+def rectangle_noir(haut, larg, y1, y2, x1, x2):
+	for y in range (haut):
+		for x in range (larg):
+			if (y1 <= y and y2 > y ) and (x1 <= x and x2 > x):
+				graph.plot(y,x)
+
+
+
+def rayures_verticales(haut,larg_bande, lst):
+	graph.open_win(haut,larg_bande*len(lst),4)
+	for j in range(len(lst)):
+		depart = j * larg_bande
+		arrive = depart +larg_bande
+		if lst[j] == 0:
+			rectangle_noir(haut,larg_bande*len(lst),0,haut,depart,arrive)
+	graph.wait()
+
+
+
+#rayures_verticales(50, 10, lst)
+
+
+#---------------------la meilleur est la 2eme
+
+
+
+lstlst = [[0, 1, 1, 0, 1, 1, 1, 0],
+		 [1, 0, 0, 1, 1, 0, 0, 1],
+		 [0, 1, 0, 1, 1, 0, 0, 1],
+	 	 [0, 1, 0, 1, 0, 0, 1, 1],
+		 [1, 0, 1, 0, 0, 1, 1, 0],
+		 [1, 1, 0, 0, 0, 1, 0, 1]]
+
+
+#--------------------------------------3.1
+
+
+def nb_lignes(lst):
+	return len(lst)
+
+
+
+def nb_colonnes(lst):
+	return len(lst[0])
+
+
+
+
+
+def taille_image(lst, taille):
+	return (nb_lignes(lst)*taille,nb_colonnes(lst)*taille)
+
+
+
+print(taille_image(lstlst,10))
+
+
+
+def damier(lst, taille):
+	haut = 0
+	larg = 0
+	tailleImage = taille_image(lst, taille)
+	graph.open_win(tailleImage[0],tailleImage[1] , 4)
+	for i in range(len(lst)):
+		haut = i * taille
+		for j in range(len(lst[i])):
+			larg = j * taille
+			if lst[i][j]==0:
+				rectangle_noir(tailleImage[0],tailleImage[1],haut,haut+taille,larg,larg+taille)
+	graph.wait()
+
+
+damier(lstlst, 10)
