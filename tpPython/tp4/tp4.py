@@ -95,11 +95,11 @@ def dessine_bandes1(lst, hauteur, largeur_bandes):
 
 #--------------------------deuxième stratégie----exo2
 
-def rectangle_noir(haut, larg, y1, y2, x1, x2):
+def rectangle_noir(haut, larg, y1, y2, x1, x2, couleur="black"):
 	for y in range (haut):
 		for x in range (larg):
 			if (y1 <= y and y2 > y ) and (x1 <= x and x2 > x):
-				graph.plot(y,x)
+				graph.plot(y,x,couleur)
 
 
 
@@ -179,3 +179,46 @@ def damier(lst, taille):
 laby = Labyrinthe.creer(11,15)
 for ligne in laby:
 	print(ligne)
+
+
+#damier(laby, 10)
+
+
+def entree(lst):
+	entre = None
+	for y in range(len(lst)):
+		for x in range(len(lst[y])):
+			if lst[y][x] == 2:
+				entre = (y,x)
+	return entre
+
+
+def sortie(lst):
+	sortie = None
+	for y in range(len(lst)):
+		for x in range(len(lst[y])):
+			if lst[y][x] == 3:
+				sortie = (y,x)
+	return sortie
+
+
+def dessine_labyrinthe(lst, taille):
+	haut = 0
+	larg = 0
+	tailleImage = taille_image(lst, taille)
+	graph.open_win(tailleImage[0],tailleImage[1] , 4)
+	for i in range(len(lst)):
+		haut = i * taille
+		for j in range(len(lst[i])):
+			larg = j * taille
+			if lst[i][j]==0:
+				rectangle_noir(tailleImage[0],tailleImage[1],haut,haut+taille,larg,larg+taille)
+			elif lst[i][j]==2:
+				rectangle_noir(tailleImage[0],tailleImage[1],haut,haut+taille,larg,larg+taille, couleur="blue")
+			elif lst[i][j]==3:rectangle_noir(tailleImage[0],tailleImage[1],haut,haut+taille,larg,larg+taille, couleur="red")
+
+
+	graph.wait()
+
+
+dessine_labyrinthe(laby, 10)
