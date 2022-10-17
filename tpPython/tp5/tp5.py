@@ -52,23 +52,43 @@ def voisin_laby_fin(lgn,col,nb_lignes,nb_colonnes):
     coordNonTeste = [[lgn-1,col],[lgn+1,col],[lgn,col-1],[lgn ,col+1]]
     for i in range(4):
         if coordNonTeste[i][0] <= nb_lignes and coordNonTeste[i][0] >= 0 and coordNonTeste[i][1] <= nb_colonnes and coordNonTeste[i][1] >= 0:
-            coord = coord + [coordNonTeste[i]]
+            coord.append(tuple(coordNonTeste[i]))
     return coord
 
 
 print("cases voisines : ", voisin_laby_fin(1,1,DimensionsX,DimensionsY))
 
 
-def voisins_laby_acc(lgn,col,laby):
+#def voisins_laby_acc(lgn,col,laby):
+#    casesAcc = []
+#    DimensionsY = taille_laby(laby)[0]
+#    DimensionsX = taille_laby(laby)[1]
+#    casesVoisines = voisin_laby_fin(lgn,col,DimensionsX,DimensionsY)
+#    for i in range(4):
+#        if laby[casesVoisines[i][0]][casesVoisines[i][1]]:
+#            casesAcc = casesAcc + [casesVoisines[i]]
+#    return casesAcc
+
+
+def voisins_laby_acc(coord,laby):
     casesAcc = []
     DimensionsY = taille_laby(laby)[0]
     DimensionsX = taille_laby(laby)[1]
-    casesVoisines = voisin_laby_fin(lgn,col,DimensionsX,DimensionsY)
+    casesVoisines = voisin_laby_fin(coord[0],coord[1],DimensionsX,DimensionsY)
     for i in range(4):
         if laby[casesVoisines[i][0]][casesVoisines[i][1]]:
             casesAcc = casesAcc + [casesVoisines[i]]
     return casesAcc
 
 
+print("cases accessibles : ", voisins_laby_acc((3,4),laby))
 
-print("cases accessibles : ", voisins_laby_acc(3,4,laby))
+
+
+
+
+labySimple = [[0, 0, 0, 0, 0, 0, 0],
+              [0, 2, 1, 1, 0, 1, 0],
+              [0, 0, 0, 1, 0, 1, 0],
+              [0, 0, 0, 1, 1, 3, 0],
+              [0, 0, 0, 0, 0, 0, 0]]
