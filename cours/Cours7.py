@@ -53,12 +53,19 @@ print(multiplication(10, 0))
 #-----------------3
 
 
-def pgcd(a, b):
-    if b == 0:
+def pgcd(a,b):
+    if b==0:
         return a
+    return pgcd(b,a%b)
+
+
+
+#---------------4
+
+
+
+def Cnp(n,p):
+    if p == 0 or p == n:
+        return 1
     else:
-        return a % pgcd(a, b-1)
-
-
-
-print(pgcd(60,100))
+        return Cnp(n-1,p) + Cnp(n-1,p-1)
