@@ -91,3 +91,70 @@ print(est_premier(17))
 
 
 #----------------------8
+
+
+def est_pair(n):
+    if n == 0:
+        return True
+    elif n == 1:
+        return False
+    else:
+        return est_pair(n-2)
+
+
+print(est_pair(13))
+
+
+
+def est_divisible_par(n, b):
+    if n == 0:
+        return True
+    elif n<0:
+        return False
+    else:
+        return est_divisible_par(n-b,b)
+
+
+
+print(est_divisible_par(20,3))
+
+
+
+def quotientDivision(n,b):
+    if b > n:
+        return 0
+    else:
+        return quotientDivision(n-b,b)+1
+
+
+print(quotientDivision(55,10))
+
+
+def nbChiffres(n):
+    if n==0:
+        return 0
+    else:
+        return nbChiffres(n//10)+1
+
+
+print(nbChiffres(1334))
+
+
+def ordreDeGrandeur(n):
+    if n<10:
+        return 1
+    else:
+        return 10 * ordreDeGrandeur(n//10)
+
+print(ordreDeGrandeur(4567))
+
+
+
+def fibo_iter(n):
+    if n == 0:
+        return 0
+    else:
+        return fibo_iter(n-1)+(n-2)
+
+
+print(fibo_iter(3))
