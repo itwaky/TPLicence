@@ -152,9 +152,11 @@ print(ordreDeGrandeur(4567))
 
 def fibo_iter(n):
     if n == 0:
-        return 0
+        return 1
+    elif n == 1:
+        return 1
     else:
-        return fibo_iter(n-1)+(n-2)
+        return fibo_iter(n-1)+fibo_iter(n-2)
 
 
-print(fibo_iter(3))
+print(fibo_iter(6))
