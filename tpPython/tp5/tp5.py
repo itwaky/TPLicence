@@ -92,3 +92,14 @@ labySimple = [[0, 0, 0, 0, 0, 0, 0],
               [0, 0, 0, 1, 0, 1, 0],
               [0, 0, 0, 1, 1, 3, 0],
               [0, 0, 0, 0, 0, 0, 0]]
+
+
+def exploreVoie(depart, labySimple):
+    trouver = False
+    arrive = sortie(labySimple)
+    case = depart
+    lstCellules = [(case)]
+    while trouver == False:
+        caseAcc = voisins_laby_acc(case,labySimple)
+        case = caseAcc[i]
+        for i in range(len(caseAcc

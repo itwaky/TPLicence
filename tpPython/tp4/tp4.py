@@ -176,7 +176,7 @@ def damier(lst, taille):
 
 
 
-laby = Labyrinthe.creer(11,15)
+laby = Labyrinthe.creer(61,61)
 for ligne in laby:
 	print(ligne)
 
@@ -206,7 +206,7 @@ def dessine_labyrinthe(lst, taille):
 	haut = 0
 	larg = 0
 	tailleImage = taille_image(lst, taille)
-	graph.open_win(tailleImage[0],tailleImage[1] , 4)
+	graph.open_win(tailleImage[0],tailleImage[1] , 1)
 	for i in range(len(lst)):
 		haut = i * taille
 		for j in range(len(lst[i])):
