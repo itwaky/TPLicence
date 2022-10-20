@@ -101,5 +101,7 @@ def exploreVoie(depart, labySimple):
     lstCellules = [(case)]
     while trouver == False:
         caseAcc = voisins_laby_acc(case,labySimple)
-        case = caseAcc[i]
-        for i in range(len(caseAcc)):
+        case = caseAcc[0]
+        lstCellules = [(case)]
+        if arrive == case:
+            trouver = True
