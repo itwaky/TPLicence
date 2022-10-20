@@ -102,4 +102,4 @@ def exploreVoie(depart, labySimple):
     while trouver == False:
         caseAcc = voisins_laby_acc(case,labySimple)
         case = caseAcc[i]
-        for i in range(len(caseAcc
+        for i in range(len(caseAcc)):
