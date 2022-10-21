@@ -147,3 +147,17 @@ def exploreVoie(depart, labySimple):
 
 
 print("Chemin pour sortir du labyrinthe : ", exploreVoie(entree(labySimple), labySimple))
+
+
+
+
+
+
+
+#----------------------------------------------------------Pour aller plus loin
+
+
+
+
+
+
