@@ -103,5 +103,10 @@ def exploreVoie(depart, labySimple):
         caseAcc = voisins_laby_acc(case,labySimple)
         case = caseAcc[0]
         lstCellules = [(case)]
+        print(lstCellules)
         if arrive == case:
             trouver = True
+    return lstCellules
+
+
+print(exploreVoie(entree(labySimple), labySimple))
