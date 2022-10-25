@@ -38,7 +38,7 @@ def listeAuHasard(n,valmax):
 
 
 
-print(listeAuHasard(10,10))
+print(listeAuHasard(100,100))
 
 
 
