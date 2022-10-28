@@ -1,5 +1,5 @@
 import random
-
+import os
 
 
 #--------------------------------1
@@ -112,3 +112,62 @@ print(estPalindrome("kay a k"))
 #--------------------------------------8
 
 #----------------------------------------9
+
+
+#---------------------------------2.1
+
+
+#listdir     lister un répertoire
+#exists    vérifie l'existance du fichier ou dossier
+#isdir   vérifie si est un dossier
+#isfile  vérifier si est un fichier
+
+
+#-------------------------------------2.2
+
+
+
+
+
+def estUnRepertoire(path):
+    return os.path.isdir(path)
+
+
+
+
+def listedir(path):
+    if estUnRepertoire(path) == False:
+        return [path]
+    else:
+        return os.listdir(path)
+
+
+print(listedir("/home/itwaky"))
+print(listedir("/home/itwaky/Documents/TPLicense/tpPython/morpion.py"))
+
+
+
+#-------------------------------------2.3
+
+
+
+#def rechercheDansArborescence(path, file, lst=[]):
+#    if file in listedir(path):
+#        return listedir(path + file)
+#    elif len(lst) == 0:
+#        print("liste vide")
+#        print(path)
+#        print(listedir(path))
+#        return rechercheDansArborescence(path, file, listedir(path))
+#    elif estUnRepertoire(path + "/" + lst[0]) == True:
+#        print("repertoire")
+#        print(path + "/" + lst[0])
+#        return rechercheDansArborescence(path + "/" + lst[0], file, lst[1:])
+#    else:
+#        print("else")
+#        print(path + "/" + lst[0])
+#        return rechercheDansArborescence(path, file, lst[1:])
+
+
+
+#print(rechercheDansArborescence("/home/itwaky/Documents/TPLicense", "tp6.py"))
