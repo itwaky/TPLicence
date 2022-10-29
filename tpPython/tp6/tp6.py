@@ -1,6 +1,7 @@
 import random
 import os
-
+import sys
+sys.setrecursionlimit(10000000)
 
 #--------------------------------1
 
@@ -110,6 +111,22 @@ print(estPalindrome("kay a k"))
 
 
 #--------------------------------------8
+
+
+
+def dichotomieCarre(bmin, bmax, epsilon):
+    if round((bmin**2)-2, len(str(int(round(10/epsilon, 1))))-2) == 0:
+        return round(bmin, len(str(int(round(10/epsilon, 1))))-2)
+    else:
+        borne = (bmin+bmax)/2
+        if ((borne**2)-2) > 0:
+            return dichotomieCarre(bmin, borne, epsilon)
+        else:
+            return dichotomieCarre(borne, bmax, epsilon)
+
+print("resultat : ", dichotomieCarre(1,2,0.000000001))
+
+
 
 #----------------------------------------9
 
