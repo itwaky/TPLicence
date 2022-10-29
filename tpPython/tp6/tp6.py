@@ -129,7 +129,17 @@ print("resultat : ", dichotomieCarre(1,2,0.000000001))
 
 
 #----------------------------------------9
+def dichotomieCarre(a, b , c, bmin, bmax, epsilon):
+    if round(((a)*(bmin**2))+((b)*bmin)+(c), len(str(int(round(10/epsilon, 1))))-2) == 0:
+        return round(bmin, len(str(int(round(10/epsilon, 1))))-2)
+    else:
+        borne = (bmin+bmax)/2
+        if ((a)*(borne**2))+((b)*borne)+(c) > 0:
+            return dichotomieCarre(a, b, c, bmin, borne, epsilon)
+        else:
+            return dichotomieCarre(a, b, c, borne, bmax, epsilon)
 
+print(dichotomieCarre(2,5,-1,0.1,1,0.00001))
 
 #---------------------------------2.1
 
