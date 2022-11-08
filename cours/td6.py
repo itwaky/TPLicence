@@ -160,3 +160,18 @@ def fibo_iter(n):
 
 
 print(fibo_iter(6))
+
+
+
+def dichotomieSin(bmin, bmax, epsilon):
+    if bmax - bmin < epsilon:
+        return (bmin, bmax)
+    else:
+        milieu = (bmin + bmax)/2
+        x = math.sin(milieu)
+        if x > 0:
+            return dichotomieSin(milieu, bmax, epsilon)
+        else:
+            return dichotomieSin(bmin, milieu, epsilon)
+
+print(dichotomieSin(1.7, 4, 0.0001))
