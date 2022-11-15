@@ -182,17 +182,10 @@ print(listedir("/home/itwaky/Documents/TPLicense/tpPython/morpion.py"))
 #    if file in listedir(path):
 #        return listedir(path + file)
 #    elif len(lst) == 0:
-#        print("liste vide")
-#        print(path)
-#        print(listedir(path))
 #        return rechercheDansArborescence(path, file, listedir(path))
 #    elif estUnRepertoire(path + "/" + lst[0]) == True:
-#        print("repertoire")
-#        print(path + "/" + lst[0])
 #        return rechercheDansArborescence(path + "/" + lst[0], file, lst[1:])
 #    else:
-#        print("else")
-#        print(path + "/" + lst[0])
 #        return rechercheDansArborescence(path, file, lst[1:])
 
 
