@@ -70,7 +70,7 @@ print("cases voisines : ", voisin_laby_fin(1,1,DimensionsX,DimensionsY))
 
 
 
-#----------------------------------------2.4 et 2.5 
+#----------------------------------------2.4 et 2.5
 
 
 
@@ -155,9 +155,3 @@ print("Chemin pour sortir du labyrinthe : ", exploreVoie(entree(labySimple), lab
 
 
 #----------------------------------------------------------Pour aller plus loin
-
-
-
-
-
-

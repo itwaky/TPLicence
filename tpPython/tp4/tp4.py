@@ -176,7 +176,7 @@ def damier(lst, taille):
 
 
 
-laby = Labyrinthe.creer(61,61)
+laby = Labyrinthe.creer(9,9)
 for ligne in laby:
 	print(ligne)
 
