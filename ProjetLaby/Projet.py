@@ -4,7 +4,7 @@ import Labyrinthe
 
 
 
-#----------------------------------------------Afficher le labyrinthe
+#-------------------------Mission1---------------------Afficher le labyrinthe
 
 
 
@@ -51,3 +51,9 @@ def dessine_labyrinthe(lst, taille):
 
 
 dessine_labyrinthe(laby, 10)
+
+
+
+
+
+#-----------------------------Mission2------------------Résolution du labyrinthe
