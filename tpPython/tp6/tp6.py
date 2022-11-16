@@ -191,3 +191,79 @@ print(listedir("/home/itwaky/Documents/TPLicense/tpPython/morpion.py"))
 
 
 #print(rechercheDansArborescence("/home/itwaky/Documents/TPLicense", "tp6.py"))
+
+
+
+
+#------------------------------------------3 Pour aller plus loin---------
+
+
+def troisiemeTour(dep, dest):
+    tourListe = (0,1,2)
+    tour = None
+    for i in range (len(tourListe)):
+        if tourListe[i] != dep and tourListe[i] != dest:
+            tour = i
+    return tour
+
+def afficheMouvement(dep, dest):
+    if dep < dest:
+        return "T" + str(dep) + " -> " + "T" + str(dest)
+    else:
+        return "T" + str(dest) + " <- " + "T" + str(dep)
+
+
+def mouvement(hanoi, dep, dest):
+    disque = hanoi[dep][0]
+    del hanoi[dep][0]
+    hanoi[dest].insert(0, disque)
+    print(afficheMouvement(dep, dest))
+    print(hanoi)
+    return hanoi
+
+def mouvementEstValide(hanoi, dep, dest):
+    if dep in (0, 1, 2) and dest in (0, 1, 2):
+        pass
+    else:
+        return False
+    if dep != dest:
+        pass
+    else:
+        return False
+    try:
+        hanoi[dep][0]
+        try:
+            hanoi[dest][0]
+            if hanoi[dep][0] < hanoi[dest][0]:
+                pass
+            else:
+                return False
+        except IndexError:
+            pass
+    except IndexError:
+        return False
+    return True
+
+
+
+hanoi=[[1,2,3],[],[]]
+print(mouvementEstValide(hanoi,0,2))
+
+
+
+
+
+
+
+def mouvementMultiDisque(hanoi, dep, dest, nbDisque):
+    if nbDisque == 0:
+        return hanoi
+    else:
+        if mouvementEstValide(hanoi, dep, dest):
+            hanoi = mouvement(hanoi, dep, dest)
+            return mouvementMultiDisque(hanoi, dep, dest, nbDisque-1)
+        else:
+            return mouvementMultiDisque(hanoi, dep, dest, nbDisque-1)
+
+
+print(mouvementMultiDisque(hanoi, 0, 2, 2))
