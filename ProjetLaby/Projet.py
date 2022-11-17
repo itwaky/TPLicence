@@ -57,3 +57,53 @@ dessine_labyrinthe(laby, 10)
 
 
 #-----------------------------Mission2------------------Résolution du labyrinthe
+
+
+
+def coord(lst, n):
+    for y in range(len(lst)):
+        for x in range(len(lst[y])):
+            if lst[y][x] == n:
+                return (y,x)
+    return None
+
+
+def entree(lst):
+    return coord(lst, 2)
+
+
+def sortie(lst):
+    return coord(lst, 3)
+
+
+def voisin_laby_fin(lgn,col,nb_lignes,nb_colonnes):
+    coord = []
+    coordNonTeste = [[lgn-1,col],[lgn+1,col],[lgn,col-1],[lgn ,col+1]]
+    for i in range(4):
+        if coordNonTeste[i][0] <= nb_lignes and coordNonTeste[i][0] >= 0 and coordNonTeste[i][1] <= nb_colonnes and coordNonTeste[i][1] >= 0:
+            coord.append(tuple(coordNonTeste[i]))
+    return coord
+
+
+
+def voisins_laby_acc(coord,laby):
+    casesAcc = []
+    DimensionsY = taille_laby(laby)[0]
+    DimensionsX = taille_laby(laby)[1]
+    casesVoisines = voisin_laby_fin(coord[0],coord[1],DimensionsX,DimensionsY)
+    for i in range(len(casesVoisines)):
+        if laby[casesVoisines[i][0]][casesVoisines[i][1]] == 1 or laby[casesVoisines[i][0]][casesVoisines[i][1]] == 3:
+            casesAcc = casesAcc + [casesVoisines[i]]
+    return casesAcc
+
+
+def afficherParcour(listCel, laby):
+    for y in range(len(laby)):
+        print()
+        for x in range(len(laby[y])):
+            cel = (y, x)
+            if cel in listCel:
+                print("*", end=" ")
+            else:
+                print(laby[y][x], end=" ")
+    print()

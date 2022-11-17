@@ -124,7 +124,6 @@ def afficherParcour(listCel, laby):  #cette fonction n'est pas demander dans le 
     print()
 
 
-
 def exploreVoie(depart, labySimple):
     trouver = False
     arrive = sortie(labySimple)
@@ -142,7 +141,6 @@ def exploreVoie(depart, labySimple):
         if arrive == case:
             trouver = True
     return lstCellules
-
 
 
 
