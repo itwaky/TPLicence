@@ -1,5 +1,5 @@
 import tkdraw.basic as graph
-import Labyrinthe
+import Labyrinthe, random
 
 
 
@@ -9,7 +9,17 @@ import Labyrinthe
 
 
 
-laby = Labyrinthe.creer(17,17)
+laby = Labyrinthe.creer(9,9)
+
+
+#laby = [[0, 0, 0, 0, 0, 0, 0],
+#        [0, 1, 1, 1, 1, 3, 0],
+#        [0, 1, 0, 1, 0, 0, 0],
+#        [0, 2, 0, 1, 1, 1, 0],
+#        [0, 0, 0, 0, 0, 0, 0]]
+
+
+
 for ligne in laby:
 	print(ligne)
 def nb_lignes(lst):
@@ -115,26 +125,51 @@ def afficherParcour(listCel, laby):
     print()
 
 
+
+
+
 def exploreVoie(depart, labySimple):
     trouver = False
     arrive = sortie(labySimple)
     case = depart
     lstCellules = [(case)]
+    lstEmbranchement = []
+    positionLst = 0
+    positionEssaie = 0
     while trouver == False:
+        input("Attente d'entré utilisateur...")
         caseAcc = voisins_laby_acc(case,labySimple)
         vraiCasesAcc = []
         for i in range(len(caseAcc)):
             if caseAcc[i] not in lstCellules:
-                vraiCasesAcc += caseAcc[i]
+                vraiCasesAcc.append(tuple(caseAcc[i]))
+        print("Vrai case acc : ", vraiCasesAcc)
         if len(vraiCasesAcc) > 1:
-            pass
+            lstEmbranchement.append([positionLst, positionEssaie])
+            print("Liste des embranchement", lstEmbranchement)
+            case = vraiCasesAcc[positionEssaie]
         else:
-            case = vraiCasesAcc[0]
-            print(case)
+            try: 
+                case = vraiCasesAcc[positionEssaie]
+            except IndexError:
+                pass
+        positionEssaie = 0
         if case in lstCellules:
-            return []
-        lstCellules += [(case)]
-        afficherParcour(lstCellules, labySimple) #fait pas gaffe a ça c'est pas demander dans le tp c'est simplement pour afficher le chemin en cours c'était pour débuger
+            #reviens a l'enbranchement d'avant a partir d'une liste contenant toutes les positions des embranchement passé avec les choix précédent
+            dernierEmbranchement = lstEmbranchement[-1]
+            #supprime l'embranchement
+            print("Retour à l'embranchement : ", dernierEmbranchement)
+            lstCellules = lstCellules[0:dernierEmbranchement[0]+1]
+            print(lstCellules)
+            positionEssaie = dernierEmbranchement[1]+1
+            positionLst = dernierEmbranchement[0]
+            case = lstCellules[-1]
+        else:
+            print("Ajout de la case : ", case)
+            lstCellules += [(case)]
+            positionLst += 1
+        print(lstCellules)
+        afficherParcour(lstCellules, labySimple)
         if arrive == case:
             trouver = True
     return lstCellules
