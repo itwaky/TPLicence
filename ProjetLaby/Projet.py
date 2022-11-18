@@ -50,7 +50,6 @@ def dessine_labyrinthe(lst, taille):
 	graph.wait()
 
 
-dessine_labyrinthe(laby, 10)
 
 
 
@@ -84,7 +83,14 @@ def voisin_laby_fin(lgn,col,nb_lignes,nb_colonnes):
             coord.append(tuple(coordNonTeste[i]))
     return coord
 
-
+def taille_laby(lst):
+    y2 = 0
+    x2 = 0
+    for y in range(len(lst)):
+        y2 += 1
+    for x in range(len(lst[y])):
+        x2 +=1
+    return (y2,x2)
 
 def voisins_laby_acc(coord,laby):
     casesAcc = []
@@ -107,3 +113,31 @@ def afficherParcour(listCel, laby):
             else:
                 print(laby[y][x], end=" ")
     print()
+
+
+def exploreVoie(depart, labySimple):
+    trouver = False
+    arrive = sortie(labySimple)
+    case = depart
+    lstCellules = [(case)]
+    while trouver == False:
+        caseAcc = voisins_laby_acc(case,labySimple)
+        vraiCasesAcc = []
+        for i in range(len(caseAcc)):
+            if caseAcc[i] not in lstCellules:
+                vraiCasesAcc += caseAcc[i]
+        if len(vraiCasesAcc) > 1:
+            pass
+        else:
+            case = vraiCasesAcc[0]
+            print(case)
+        if case in lstCellules:
+            return []
+        lstCellules += [(case)]
+        afficherParcour(lstCellules, labySimple) #fait pas gaffe a ça c'est pas demander dans le tp c'est simplement pour afficher le chemin en cours c'était pour débuger
+        if arrive == case:
+            trouver = True
+    return lstCellules
+
+print(exploreVoie(entree(laby), laby))
+dessine_labyrinthe(laby, 10)
