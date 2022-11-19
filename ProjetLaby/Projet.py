@@ -128,9 +128,9 @@ def afficherParcour(listCel, laby):
 
 
 
-def exploreVoie(depart, labySimple):
+def exploreVoie(depart, laby):
     trouver = False
-    arrive = sortie(labySimple)
+    arrive = sortie(laby)
     case = depart
     lstCellules = [(case)]
     lstEmbranchement = []
@@ -138,7 +138,7 @@ def exploreVoie(depart, labySimple):
     positionEssaie = 0
     while trouver == False:
         input("Attente d'entré utilisateur...")
-        caseAcc = voisins_laby_acc(case,labySimple)
+        caseAcc = voisins_laby_acc(case,laby)
         vraiCasesAcc = []
         for i in range(len(caseAcc)):
             if caseAcc[i] not in lstCellules:
@@ -169,7 +169,7 @@ def exploreVoie(depart, labySimple):
             lstCellules += [(case)]
             positionLst += 1
         print(lstCellules)
-        afficherParcour(lstCellules, labySimple)
+        afficherParcour(lstCellules, laby)
         if arrive == case:
             trouver = True
     return lstCellules
