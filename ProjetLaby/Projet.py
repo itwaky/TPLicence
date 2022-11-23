@@ -62,9 +62,6 @@ def dessine_labyrinthe(lst, taille):
 
 
 
-
-
-
 #-----------------------------Mission2------------------Résolution du labyrinthe
 
 
