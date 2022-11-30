@@ -29,7 +29,7 @@ def sortie(lst):
 
 
 
-print("entre :", entree(laby), " sortie : ", sortie(laby))
+#print("entre :", entree(laby), " sortie : ", sortie(laby))
 
 
 
@@ -47,7 +47,7 @@ def taille_laby(lst):
 
 
 
-print("taille : ", taille_laby(laby))
+#print("taille : ", taille_laby(laby))
 
 DimensionsY = taille_laby(laby)[0]
 DimensionsX = taille_laby(laby)[1]
@@ -66,7 +66,7 @@ def voisin_laby_fin(lgn,col,nb_lignes,nb_colonnes):
     return coord
 
 
-print("cases voisines : ", voisin_laby_fin(1,1,DimensionsX,DimensionsY))
+#print("cases voisines : ", voisin_laby_fin(1,1,DimensionsX,DimensionsY))
 
 
 
@@ -96,7 +96,7 @@ def voisins_laby_acc(coord,laby):
     return casesAcc
 
 
-print("cases accessibles : ", voisins_laby_acc((3,4),laby))
+#print("cases accessibles : ", voisins_laby_acc((3,4),laby))
 
 
 
@@ -144,7 +144,7 @@ def exploreVoie(depart, labySimple):
 
 
 
-print("Chemin pour sortir du labyrinthe : ", exploreVoie(entree(labySimple), labySimple))
+#print("Chemin pour sortir du labyrinthe : ", exploreVoie(entree(labySimple), labySimple))
 
 
 
@@ -153,3 +153,49 @@ print("Chemin pour sortir du labyrinthe : ", exploreVoie(entree(labySimple), lab
 
 
 #----------------------------------------------------------Pour aller plus loin
+
+
+
+
+def estMinuscule(car):
+    if car.islower():
+        return True
+    else:
+        return False
+
+
+
+def decalageCar(car, nb):
+    return chr((((ord(car)+nb) - 96) % 26) + 96)
+
+
+
+print(decalageCar('x', 10))
+
+
+def decalageStr(str, nb):
+    newStr = ''
+    for i in range(len(str)):
+        if estMinuscule(str[i]):
+            newStr += decalageCar(str[i], nb)
+        else:
+            newStr += str[i]
+    return newStr
+
+
+print(decalageStr('Bonjour', 4))
+
+
+def decalageFichier(intext, outtext, nb):
+    f = open(intext, "r") # "r" = read
+    contenu = f.read()
+    f.close()
+    newContenu = decalageStr(contenu)
+    fw = open(outtext, "w")
+    fw.write(newContenu)
+    fw.close
+
+
+
+decalageFichier("in.txt", "out.txt", 4)
+    
