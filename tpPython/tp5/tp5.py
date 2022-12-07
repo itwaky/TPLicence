@@ -1,5 +1,5 @@
 import tkdraw.basic as graph
-import Labyrinthe
+import Labyrinthe, os
 
 
 
@@ -187,15 +187,22 @@ print(decalageStr('Bonjour', 4))
 
 
 def decalageFichier(intext, outtext, nb):
-    f = open(intext, "r") # "r" = read
+    print(intext)
+    f = open(os.path.dirname(os.path.realpath(__file__)) + "/" + "in.txt", "r")
     contenu = f.read()
     f.close()
     newContenu = decalageStr(contenu)
-    fw = open(outtext, "w")
+    fw = open(os.path.dirname(os.path.realpath(__file__)) + "/" + "out.txt", "w")
     fw.write(newContenu)
     fw.close
 
 
 
-decalageFichier("in.txt", "out.txt", 4)
+decalageFichier('in.txt', 'out.txt', 4)
+
+f = open(os.path.dirname(os.path.realpath(__file__)) + "/" + "in.txt", "r")
+print(f.read())
+print(os.path.dirname(os.path.realpath(__file__)) + "/" + "in.txt")
+f.close()
+
     
