@@ -198,11 +198,16 @@ def decalageFichier(intext, outtext, nb):
 
 
 
-decalageFichier('in.txt', 'out.txt', 4)
+#decalageFichier('in.txt', 'out.txt', 4)
 
 f = open(os.path.dirname(os.path.realpath(__file__)) + "/" + "in.txt", "r")
 print(f.read())
-print(os.path.dirname(os.path.realpath(__file__)) + "/" + "in.txt")
+print(os.path.dirname(os.path.realpath(__file__)) + "/" + "out.txt")
+contenue = f.read()
 f.close()
+fw = open(os.path.dirname(os.path.realpath(__file__)) + "/" + "out.txt", "w")
+fw.write(contenue)
+fw.close
+
 
     

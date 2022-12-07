@@ -41,3 +41,6 @@ while victoire == False:
         if (morpion[y][0] == 1 and morpion[y][1] == 1 and morpion[y][2] == 1):
             print("Bravo au joueur 0")
             victoire = True
+        elif (morpion[0][y] == 1 and morpion[1][y] == 1 and morpion[2][y] == 1):
+            print("Bravo au joueur 0")
+            victoire = True
