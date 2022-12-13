@@ -1,0 +1,75 @@
+def etoile(nb):
+    return (nb*"*")
+
+#print(etoile(5))
+
+
+def etoileBandeBlanche(longueur, pos, larg_bande):
+    if (pos + larg_bande) > longueur:
+        return ""
+    else:
+        return etoile(pos) + " " * larg_bande + etoile(longueur-(pos+larg_bande))
+
+
+#print(etoileBandeBlanche(10,3,2))
+
+
+def afficheEcharpeBlanche(longueur, larg_bande):
+    for i in range(longueur):
+        print(etoileBandeBlanche(longueur, i, larg_bande))
+    
+
+#afficheEcharpeBlanche(10,3)
+
+
+
+def sommeLst(lst):
+    total = 0
+    for elem in lst:
+        total += elem
+    return total
+
+#print(sommeLst([1, 2, 3]))
+
+
+def normaliser(lst):
+    somme = sommeLst(lst)
+    for i in range(len(lst)):
+        lst[i] = lst[i]/somme
+
+
+lst1 = [1,2,3]
+
+
+def creerNormal(lst):
+    somme = sommeLst(lst)
+    lst2 = []
+    for elem in lst:
+        lst2 += [elem/somme]
+    return lst2
+
+#print(creerNormal(lst1))
+#print(lst1)
+
+def cumul(lst):
+    newLst = []
+    somme = 0
+    for i in range(len(lst)):
+        somme = sommeLst(lst[:i+1])
+        newLst += [somme]
+    return newLst
+
+#print(cumul([2,3,0,6,2]))
+
+
+
+
+
+
+
+        
+
+
+
+
+
