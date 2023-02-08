@@ -10,6 +10,13 @@ import random
 #   /3,1|3,2|3,3/
 #
 
+def afficherMatrice (matrice):
+    for x in range (len(matrice)):
+        print()
+        for y in range(len(matrice[x])):
+            print(matrice[x][y], end=" ")
+    print()
+
 
 def generationMine (matrice):
     for x in range (len(matrice)):
@@ -32,15 +39,12 @@ def calculAdjacent (matrice):
 
 
 def creationMatrice (tailleX, tailleY):
-    matrice = [0]
-    for y in range (tailleY):
-        pass
+    matrice = []
+    for x in range (tailleX):
+        matrice.append([0])
+        for y in range (tailleY):
+            matrice[x].append(0)
+    return matrice
 
+afficherMatrice(creationMatrice(10,10))
 
-
-matrice = [0]
-print(matrice)
-matrice.append(0)
-print(matrice) 
-matrice.append([0])
-print(matrice)
