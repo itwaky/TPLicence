@@ -1,7 +1,7 @@
 import random
 
 
-# 9 = mine / chiffre inférieur a 9 = libre
+#9 = mine / chiffre inférieur a 9 = libre
 
 # 2,2 --> 2,1 / 1,2 / 1,1 / 3,3 / 1,3 / 3,1 / 2,3 / 3,2
 #
@@ -16,6 +16,9 @@ def afficherMatrice (matrice):
         for y in range(len(matrice[x])):
             print(matrice[x][y], end=" ")
     print()
+
+def afficherMatriceJoueur (matriceChoix, demineur):
+    return None
 
 
 def generationMine (matrice):
@@ -48,5 +51,43 @@ def creationMatrice (tailleX, tailleY):
     matrice = calculAdjacent(matrice)
     return matrice
 
-afficherMatrice(creationMatrice(10,10))
+def creationMatriceChoix(matrice):
+    for x in range(len(matrice)):
+        matrice.append([])
+        for y in range(len(matrice[x])):
+            matrice[x].append[0]
+    return matrice
+
+
+def selectionJoueur(matrice):
+    print()
+    x = input("Choisissez l'emplacement en abscice : ")
+    print()
+    y = input("Choisissez l'emplacement en ordonné : ")
+    print()
+    if x < len(matrice[y]) and y < len(matrice):
+        coordonnees = (x, y)
+    else:
+        print("Les valeurs ne sont pas valide veuillez en entrer de nouvelles...")
+        selectionJoueur(matrice)
+    return coordonnees
+
+
+
+def verificationVictoire(matrice):
+    for y in range(len(matrice)):
+        for x in range(len(matrice[y])):
+            if matrice[y][x] != 9 or matrice[y][x] != 10:
+                return False
+    return True
+
+
+demineur = creationMatrice(10, 10)
+
+
+while verificationVictoire(demineur) == False:
+
+
+
+
 
