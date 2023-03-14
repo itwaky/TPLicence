@@ -247,7 +247,7 @@ write:	LDA i
 exit:	HRS
 
 
-;---------------------------------TP2----------------------------------------------------
+;---------------------------------TP2----2.2Exercices------------------------------------------------
 
 
 ;ex------------------1
@@ -312,7 +312,114 @@ boucle: LDA size
         SUB i
         JAZ sortie
         LDA i
+		STI tab1
         ADD un
         STA i
+		LDA tab1
+		ADD un
+		STA tab1
+		LDA zero
+		JAZ boucle
+
+sortie:	HRS
 
 
+;ex-------------------------------4-------------------
+
+
+
+
+.at 10
+
+zero: .word 000
+un: .word 001
+tab1: .word 000
+tab2: .word 000
+size: .word 000
+i: .word 000
+ptr: .word 000
+
+
+
+main:   INP tab1
+		INP tab2
+        INP size
+boucle: LDA size
+        SUB i
+        JAZ suite
+        LDA i
+		STI tab1
+        ADD un
+        STA i
+		LDA tab1
+		ADD un
+		STA tab1
+		LDA zero
+		JAZ boucle
+
+suite:	LDA i
+		JAZ sortie
+		LDA tab1
+		SUB i
+		STA ptr
+		LDI ptr
+		STI tab2
+		LDA tab2
+		ADD un
+		STA tab2
+		LDA i
+		SUB un
+		STA i
+		LDA zero
+		JAZ suite
+		
+
+
+
+sortie:	HRS
+
+
+.at 50
+zero: .word 000
+un: .word 001
+i: .word 000
+n: .word 000
+nb: .word 000
+tab: .word 000
+.at 40
+ptr: .word tab
+sorti: .word 000
+
+.at 10
+main:	INP n
+
+boucle:	LDA n
+		SUB i
+		JAZ suite
+		INP nb
+		LDA nb
+		STI ptr
+		LDA ptr
+		ADD un
+		STA ptr
+		LDA i
+		ADD un
+		STA i
+		LDA zero
+		JAZ boucle
+
+suite:	LDA i
+		JAZ sortie
+		LDA ptr
+		SUB un
+		STA ptr
+		LDI ptr
+		STA sorti
+		OUT sorti
+		LDA i 
+		SUB un
+		STA i
+		LDA zero
+		JAZ suite
+
+sortie:	HRS
