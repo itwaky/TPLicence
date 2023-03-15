@@ -17,6 +17,7 @@ def afficherMatrice (matrice):
             print(matrice[x][y], end=" ")
     print()
 
+
 def afficherMatriceJoueur (matriceChoix, demineur):
     return None
 
@@ -83,9 +84,6 @@ def verificationVictoire(matrice):
 
 
 demineur = creationMatrice(10, 10)
-
-
-while verificationVictoire(demineur) == False:
 
 
 
