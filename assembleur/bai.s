@@ -379,6 +379,9 @@ suite:	LDA i
 sortie:	HRS
 
 
+
+;-----------------------------------------5------------------------
+
 .at 50
 zero: .word 000
 un: .word 001
@@ -423,3 +426,35 @@ suite:	LDA i
 		JAZ suite
 
 sortie:	HRS
+
+
+
+;-----------------------------------6---------------------------
+
+tab: .word 014, 101, 240, 039, 321, 062
+size: .word 006
+temp: .word 000
+total: .word 000
+zero: .word 000
+un: .word 001
+ptr: .word tab
+
+main:	LDA size
+		JAZ sortie
+		LDI ptr
+		STA temp
+		LDA total
+		ADD temp
+		STA total
+		LDA ptr
+		ADD un
+		STA ptr
+		LDA size
+		SUB un
+		STA size
+		LDA zero
+		JAZ main
+
+sortie:	OUT total
+		HRS
+		
