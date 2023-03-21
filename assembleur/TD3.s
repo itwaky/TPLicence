@@ -31,7 +31,7 @@ tableau_boucle:     LDA tableau_size
 tableau_return:     .space 1
 
 
-; --- fonction copie
+; --- fonction tableaucopie
 
 tableauCopie_size: .word 000
 tableauCopie_ptab: .word 000
