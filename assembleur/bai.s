@@ -457,4 +457,53 @@ main:	LDA size
 
 sortie:	OUT total
 		HRS
-		
+
+
+
+
+; ---------------TP3--ex03----
+
+.at 97
+sp: .word 097
+rv: .word 000
+
+.at 01
+zero: .word 000
+one: .word 001
+
+; --- fonction de multiplication
+x_a: .word 000
+x_b: .word 000
+x_ab: .word 000
+
+x_mul:		LDA ra
+			STA x_ret
+			LDA zero
+			STA x_ab
+x_loop:		LDA x_b
+			JAZ x_end
+			SUB one
+			STA x_b
+			LDA x_ab
+			ADD x_a
+			STA x_ab
+			LDA zero
+			JAZ x_loop
+x_end:		LDA x_ab
+			STA rv
+			LDA zero
+x_ret:		.space 1
+
+; --- Fonction factorielle
+
+f_n: .word 000
+
+f_fact: 	LDA ra
+			STA f_ret
+			LDA f_n
+			SUB one
+			JAZ f_one
+			LDA sp
+			SUB one
+			STA sp
+			LDA f_n
