@@ -70,21 +70,21 @@ int main() {
 #include <stdlib.h>
 
 
-int init(int* tab1, int* tab2){
-    for (int i = 0; i<4; i++){
-        *(tab1 + i) = 0;
-        *(tab2 + i) = 0;
+void init(int* tab){
+    for (int i = 0; i<sizeof(*tab); i++){
+        *(tab + i) = 0;
     }
 
 }
 
 int main(){
     int tab1[4];
-    int* ptr = tab1;
     int* tab2 = malloc(4*sizeof(int));
-    init(ptr, tab2);
-    for (int i = 0; i<4; i++){
+    init(tab1);
+    init(tab2);
+    for (int i = 0; i<sizeof(*tab2); i++){
         printf("%d\n", tab1[i]);
         printf("%d\n", *(tab2 + i));
     }
+    free(tab2);
 }
