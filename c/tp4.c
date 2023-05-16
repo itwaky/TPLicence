@@ -82,8 +82,8 @@ void array_oddeven(int* tab, int* odd, int* even, int size, int* sizeOdd, int* s
 
 int main() {
     int test1 = 0;
-    int test2 = 0;
-    scanf("la valeur de %d est de %d \n", &test1, &test2);
+    scanf("%d", &test1);
+    printf("la valeur est %d", test1);
     int sizeOdd = 0;
     int sizeEven = 0;
     int* odd = malloc(SIZE * sizeof(int));
