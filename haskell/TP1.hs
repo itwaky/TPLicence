@@ -72,10 +72,12 @@ solution a b c =
            then let a1 = (-b) - sqrt delta
                     a2 = 2 * a
                     a3 = a1 / a2
-                in Right (a3, a3 + sqrt delta / a2)
+                in right (a3, a3 + sqrt delta / a2)
            else if delta == 0
                     then let a1 = b + sqrt delta
                              a2 = 2 * a
                              a3 = a1 / a2
-                         in Right (a3, a3)
-                    else Left "Pas de solution réelle"
+                         in right (a3, a3)
+                    else left "Pas de solution réelle"
+
+
