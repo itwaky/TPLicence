@@ -10,10 +10,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <style>
-            table,td {
+            caption{
+                caption-side: bottom;
+            }
+            .olIndent{
+                margin-bottom: 30px;
+            }
+            h1{
+                text-indent: 20px;
+            }
+            h4{
+                font-size: large;
+            }
+            body{
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+
+            }
+            td{
             border: 1px solid #333;
             }
-            thead,tfoot {
+            thead,tfoot{
             background-color: #333;
             color: #fff;
             }
@@ -22,37 +39,39 @@
     </head>
     <body>
 
-        <h1>Eros Mallet--Covic</h1>
+        <h1>Eros Mallet--Covic</h1><br>
 
-        <h2>Informations de contact</h2>
+        <h3>Informations de contact</h3>
         <p><b>Adresse : </b>4 rue du moulin Strasbourg 67000</p>
-        <p><b>Téléphone : </b>06 12 34 56 78</p>
-        <p><b>Adresse Email : </b>erosmalletcovic12@gmail.com</p>
+        <address>
+            <p><b>Téléphone : </b><a href="tel:+33612345678"> 06 12 34 56 78</a></p>
+            <p><b>Adresse Email : </b><a href="mailto:erosmalletcovic12@gmail.com">erosmalletcovic12@gmail.com</a></p>
+        </address>
 
         <hr>
 
         <h2>Formation</h2>
-        <p><strong>1ère année Licence Informatique </strong><a href="https://www.unistra.fr/"> Université de Strasbourg</a>, 2023 </p>
-        <p><strong>BTS SIO </strong><a href="http://www.lyceecassin-strasbourg.eu/"> Lycée René Cassin </a>, 2022 </p>
-        <p><strong>Bac professionnel MELEC</strong><a href="https://lyceerudloff.com/"> Lycée Marcel Rudloff </a>, 2020</p>
+        <p><strong>1ère année Licence Informatique </strong><a href="https://www.unistra.fr/"> Université de Strasbourg</a>, <time datetime="2023">2023</time></p>
+        <p><strong>BTS SIO </strong><a href="http://www.lyceecassin-strasbourg.eu/"> Lycée René Cassin </a>, <time datetime="2022">2022</time></p>
+        <p><strong>Bac professionnel MELEC</strong><a href="https://lyceerudloff.com/"> Lycée Marcel Rudloff </a>, <time datetime="2020">2020</time></p>
 
         <hr>
 
         <h2>Expérience Professionnelle</h2>
         
 
-        <p><strong>Agence littéraire cgr | </strong> 2021, Stage d'une durée de 5 semaines</p>
+        <p><strong>Agence littéraire cgr | </strong> <time datetime="2021">2021</time>, Stage d'une durée de <em>5 semaines</em></p>
         <ul>
-            <li>Développement d’un site web en React/Gatsby js</li>
+            <li>Développement d’un site web en <i>React/Gatsby js</i></li>
         </ul>
 
-        <p><strong>Pearl | </strong>2020, Stage d'une durée de 4 semaines</p>
+        <p><strong>Pearl | </strong><time datetime="2020">2020</time>, Stage d'une durée de <em>4 semaines</em></p>
         <ul>
             <li>Montage PC</li>
             <li>Réparation d'appareils électronique</li>
         </ul>
 
-        <p><strong>TSA | </strong>2019, stage d'un durée de 4 semaines</p>
+        <p><strong><abbr>TSA</abbr> | </strong><time datetime="2019">2019</time>, stage d'un durée de <em>4 semaines</em></p>
         <ul>
             <li>Réparation de téléphones et d’ordinateurs</li>
             <li>Relations clients</li>
@@ -73,18 +92,23 @@
                 </dd>
             </dl>
         </li>
-            <li><strong>Suite Office Microsoft</strong></li>
+            <li class="olIndent"><strong>Suite Office Microsoft</strong></li>
             <li><strong>Schemaplic</strong></li>
         </ol>
 
 
         <hr>
 
-        <h2>Langues</h2>
+        <h4>Langues</h4>
         <table>
+            <caption>
+                Listes des niveaux
+            </caption>
             <thead>
-                <th colspan="1">Langue</th>
-                <th colspan="2">Niveau</th>
+                <tr>
+                    <th>Langue</th>
+                    <th>Niveau</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -101,6 +125,14 @@
                 </tr>
             </tbody>
         </table>
+
+        <hr>
+
+        <details>
+            <summary>Details</summary>
+            <small>Créer par Eros Mallet--Covic</small>
+        </details>
+        <p>Appuyer sur <kbd>home</kbd> pour aller au début de la page</p>
 
 
 
