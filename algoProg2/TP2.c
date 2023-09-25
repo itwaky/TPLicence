@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+/*
 
 int nbMois (int nb, int annee){
     if (nb == 1 || nb == 3 || nb == 5 || nb == 7 || nb == 8 || nb == 10 || nb == 12){
@@ -62,6 +62,50 @@ int main(){
 
 }
 
+*/
 
+
+//----------------------------------exercice2---------------------
+
+
+
+
+
+void calculatrice(){
+    float operant1 = 0;
+    float operant2 = 0;
+    char operateur = 0; 
+    printf("entrez votre opération que vous souhaitez effectuez : ");
+    scanf("%f %c %f", &operant1, &operateur, &operant2);
+    printf("operant1 = %f, operateur = %c, operant2 = %f \n", operant1, operateur, operant2);
+    switch (operateur)
+    {
+    case '+':
+        printf("Le resultat du calcul est : %f\n", operant1 + operant2);
+        break;
+    case '-':
+        printf("Le resultat du calcul est : %f\n", operant1 - operant2);
+        break;
+    case '*':
+        printf("Le resultat du calcul est : %f\n", operant1 * operant2);
+        break;
+    case '/':
+        if (operant2 == 0.f){
+            printf("Division par 0 impossible !\n");
+        }else{
+            printf("Le resultat du calcul est : %f\n", operant1 / operant2);
+        }
+        break;
+    default:
+        printf("Opétation invalide.\n");
+        break;
+    }
+
+}
+
+
+int main(){
+    calculatrice();
+}
 
 
