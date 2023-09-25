@@ -2,7 +2,7 @@
 
 //-----------------------------exercice1------------------------
 
-
+/*
 
 int nbMois (int nb, int annee){
     printf("Debut fonction nbMois \n");
@@ -71,7 +71,7 @@ int main(){
 }
 
 
-
+*/
 
 //----------------------------------exercice2---------------------
 
@@ -121,15 +121,29 @@ int main(){
 
 //-------------------------------exercice3----------------------------------
 
+//fonction avec support bisextile
 
-/*
-#include <stdio.h>
-int nb_jours(int mois) {
+
+int bissextile(int annee){
+    if (annee%4 != 0){
+        return 0;
+    }else{
+        if (annee%100 == 0 && annee%400 != 0){
+            return 0;
+        }else{
+            return 1;
+        }
+    }
+}
+
+int nb_jours(int mois, int an) {
  int mj;
  if ((mois == 1) || (mois == 3) || (mois == 5) || (mois == 7) || (mois == 8) || (mois == 10) || (mois == 12) )
  mj = 31;
- else if (mois == 2)
+ else if (mois == 2 && bissextile(an) == 0)
  mj = 28;
+ else if (mois == 2 && bissextile(an) == 1)
+ mj = 29;
  else if ((mois<1) || (mois>12))
  {printf("Ce mois n'existe pas.\n"); return 0;}
  else
@@ -143,7 +157,7 @@ int nb_jours(int mois) {
 // post-conditions : aucune.
 void lendemain (int jour, int mois , int an)
 {
- int mj=nb_jours(mois);
+ int mj=nb_jours(mois, an);
  if ((jour<1) || (jour > mj))
  {printf("Ce jour n'existe pas.\n"); return;}
  else
@@ -166,7 +180,8 @@ void lendemain (int jour, int mois , int an)
 }
 int main()
 {
- return 0;
+    lendemain(28,2,2001);
+    lendemain(28,2,2000);
+    return 0;
 }
 
-*/
