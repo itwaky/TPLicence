@@ -40,7 +40,7 @@ void lendemain(int jour, int mois, int annee){
     //printf("%d\n", bissextile(annee));
     int anneeBissextile = bissextile(annee);
     int dureeMois = nbMois(mois, anneeBissextile);
-    printf("duree du mois : \n", dureeMois);
+    printf("duree du mois : %d\n", dureeMois);
     jour = jour + 1;
     if (jour > dureeMois){
         jour = 1;
