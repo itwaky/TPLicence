@@ -62,7 +62,7 @@ solution a b c = let delta = discriminant(a,b,c) in
 
 -} 
 
-
+{-
 discriminant a b c = b**2 - 4 * a * c
 
 
@@ -79,5 +79,123 @@ solution a b c =
                              a3 = a1 / a2
                          in right (a3, a3)
                     else left "Pas de solution réelle"
+
+
+-}
+
+
+-- Exercice7 
+
+
+{-
+
+-- 1
+
+
+revenuImposable revenuBrut = revenuBrut * 0.72
+
+
+-- 2
+
+parts_couple situation =
+    if situation == "seul"
+        then 1
+    else if situation == "couple"
+        then 2
+    else
+        error("entré invalide")
+
+
+
+
+parts_enfants nbEnfants = 
+    if nbEnfants == 0
+        then 0
+    else if nbEnfants == 1
+        then 0.5
+    else
+        nbEnfants - 1
+
+
+parts situation nbEnfants = parts_couple situation + parts_enfants nbEnfants
+
+
+
+
+-- 3
+
+
+
+
+-}
+
+
+
+
+
+--  Recursivite
+
+
+-- 1
+
+
+
+puissance(x,n) =
+    if n == 0
+        then 1
+    else
+        puissance(x,n-1) * x
+
+pgcd(a,b) =
+    if b == 0
+        then a
+    else
+        pgcd(b,a `mod` b)
+
+fibonacci(x) =
+    if x==0
+        then 0
+    else if x==1
+        then 1
+    else
+        fibonacci(x-2)+fibonacci(x-1)
+
+
+premier(n,div) = 
+    if n <=1
+        then 0
+    else if div >= n
+        then 1
+    else if n `mod` div == 0
+        then 0
+    else
+        premier(n,div+1)
+
+
+
+-- 2
+
+paiement(s,a,b,c,d) = 
+    if s == 0
+        then True
+    else if s>=a && a /=0
+        then paiement(s-200,a-1,b,c,d)
+    else if s>=b && b /=0
+        then paiement(s-100,a,b-1,c,d)
+    else if s>=c && c/=0
+        then paiement(s-50,a,b,c-1,d)
+    else if s>=d && d/=0
+        then paiement(s-10,a,b,c,d-1)
+    else
+        False
+
+nb_add_fib(n) = 
+    if n == 0 || n == 1
+        then 1
+    else
+        nb_add_fib(n-2)`div`nb_add_fib(n-2)+nb_add_fib(n-1)`div`nb_add_fib(n-1)
+
+
+
 
 
