@@ -189,11 +189,12 @@ paiement(s,a,b,c,d) =
     else
         False
 
+
 nb_add_fib(n) = 
     if n == 0 || n == 1
         then 1
     else
-        nb_add_fib(n-2)`div`nb_add_fib(n-2)+nb_add_fib(n-1)`div`nb_add_fib(n-1)
+        nb_add_fib(n-1) `div`nb_add_fib(n-2)
 
 
 
