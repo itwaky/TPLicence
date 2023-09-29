@@ -161,16 +161,39 @@ fibonacci(x) =
         fibonacci(x-2)+fibonacci(x-1)
 
 
+
+
+
+
+exist_diviseur(n,d)=
+    if d == 1 
+        then False
+    else if n `mod` d == 0
+        then True
+    else
+        exist_diviseur(n,d-1)
+
+
+
+premier(n)=
+    if n <= 1
+        then False
+    else
+        exist_diviseur(n, 2)
+
+
+-- div = 2 , A corriger non optimal
+{-
 premier(n,div) = 
     if n <=1
-        then 0
+        then False
     else if div >= n
-        then 1
+        then True
     else if n `mod` div == 0
-        then 0
+        then False
     else
         premier(n,div+1)
-
+-}
 
 
 -- 2
@@ -189,20 +212,66 @@ paiement(s,a,b,c,d) =
     else
         False
 
+-- 3
 
-nb_add_fib(n,comp) = 
+
+
+nb_add_fib(n) = 
+    if n == 0 || n == 1
+        then 0
+    else
+        nb_add_fib(n-2) + 1 + nb_add_fib(n-1)
+
+
+-- 4
+
+-- 5
+
+
+est_parfait(n,totDiv,nDiv) =
+    if n < nDiv
+        then if n * 2 == totDiv
+                then True
+            else
+                False
+    else if n `mod` nDiv == 0
+        then est_parfait(n, totDiv + nDiv, nDiv + 1)
+    else
+        est_parfait(n, totDiv, nDiv +1)
+
+
+
+-- 6
+
+champernowne(n) =
+    if n == 0
+        then "0,"
+    else 
+        champernowne(n-1) ++ show(n)
+
+
+{- version avec flotant etant pas assez precis
+champernowne(n) = 
     if n == 0
         then 0
-    else if n == 1
-        then 1
+    else if n > 10
+        then champernowne(n-1) + 100 ** (n * ( -1)) * n
     else
-        nb_add_fib(n-2, comp+1) + nb_add_fib(n-1, comp+1) 
+        champernowne(n-1) + 10 ** (n * ( -1)) * n
+
+-}
 
 
 
+-- 7
 
-fibs = 0:1:zipWith (+) fibs (tail fibs)
-
+erdos n =
+    if n == 0
+        then "0,"
+    else if premier(n, 2)
+        then erdos(n-1) ++ show(n)
+    else
+        erdos(n-1)
 
 
 

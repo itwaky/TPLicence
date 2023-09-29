@@ -34,3 +34,33 @@ suiteGeo (n,a,r) =
 -- 4
 
 
+puissance (n,x) = 
+    if n == 0
+        then 1
+    else
+        puissance(n-1, x) * x
+
+
+-- 5
+
+
+factoriel (n) = 
+    if n == 1 || n == 0
+        then 1
+    else
+        factoriel(n-1)*n
+
+-- 6
+
+
+sommeK n =
+    if n == 0
+        then 0
+    else
+        sommeK(n-1) ** 2
+
+-- 7
+
+
+
+
