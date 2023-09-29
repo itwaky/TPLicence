@@ -190,12 +190,18 @@ paiement(s,a,b,c,d) =
         False
 
 
-nb_add_fib(n) = 
-    if n == 0 || n == 1
+nb_add_fib(n,comp) = 
+    if n == 0
+        then 0
+    else if n == 1
         then 1
     else
-        nb_add_fib(n-1) `div`nb_add_fib(n-2)
+        nb_add_fib(n-2, comp+1) + nb_add_fib(n-1, comp+1) 
 
+
+
+
+fibs = 0:1:zipWith (+) fibs (tail fibs)
 
 
 
