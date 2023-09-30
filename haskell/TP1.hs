@@ -163,39 +163,23 @@ fibonacci(x) =
 
 
 
-
-
 exist_diviseur(n,d)=
-    if d == 1 
+    if d == n 
         then False
     else if n `mod` d == 0
         then True
     else
-        exist_diviseur(n,d-1)
+        exist_diviseur(n,d + 1)
 
 
 
 premier(n)=
     if n <= 1
         then False
-    else
-        exist_diviseur(n, 2)
-
-
--- div = 2 , A corriger non optimal
-{-
-premier(n,div) = 
-    if n <=1
-        then False
-    else if div >= n
-        then True
-    else if n `mod` div == 0
+    else if exist_diviseur(n,2)
         then False
     else
-        premier(n,div+1)
--}
-
-
+        True
 -- 2
 
 paiement(s,a,b,c,d) = 
@@ -225,20 +209,25 @@ nb_add_fib(n) =
 
 -- 4
 
+-- demander au prof
+
+
 -- 5
 
-
-est_parfait(n,totDiv,nDiv) =
+total_diviseur(n,nDiv) = 
     if n < nDiv
-        then if n * 2 == totDiv
-                then True
-            else
-                False
+        then 0
     else if n `mod` nDiv == 0
-        then est_parfait(n, totDiv + nDiv, nDiv + 1)
+        then total_diviseur(n, nDiv + 1) + nDiv
     else
-        est_parfait(n, totDiv, nDiv +1)
+        total_diviseur(n, nDiv + 1)
 
+
+est_parfait n =
+    if total_diviseur(n, 1) == 2*n
+        then True
+    else
+        False
 
 
 -- 6
@@ -268,7 +257,7 @@ champernowne(n) =
 erdos n =
     if n == 0
         then "0,"
-    else if premier(n, 2)
+    else if premier(n)
         then erdos(n-1) ++ show(n)
     else
         erdos(n-1)
