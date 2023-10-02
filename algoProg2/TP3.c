@@ -1,8 +1,13 @@
-//-------------------------exercice1---------------------
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
+
+
+//-------------------------exercice1---------------------
+
+/*
+
 
 
 
@@ -42,6 +47,49 @@ int main(){
     return 0;
 }
 
-
+*/
 
 //-------------------------exercice2---------------------------------
+
+
+int hasard(int min, int max){
+    return (int) (min + ((float) rand() / RAND_MAX * (max - min + 1)));
+}
+
+void afficheBarre(int r){
+    for (int i = 0; i<r;i++){
+        printf(" | ");
+    }
+    printf("\n");
+}
+
+
+int retireBarre(int r){
+    int choix = 0;
+    printf("Entrez le nombres d'allumettes que vous souhaitez enlevez : ");
+    scanf("%d", &choix);
+    return r - choix;
+}
+
+int joueurVirtuel(int r){
+    srand(time(NULL));
+    int choix = hasard(1,r);
+    return r - choix;
+}
+
+
+int main(){
+    int barres = 10;
+    int joueur = 1;
+    while (barres != 0)
+    {
+        afficheBarre(barres);
+        if (joueur % 2 == 0){
+            barres = joueurVirtuel(barres);
+        }else{
+            barres = retireBarre(barres);
+        }
+        joueur++;
+    }
+    
+}
