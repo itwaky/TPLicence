@@ -1,0 +1,13 @@
+     sur le réseaux de l'université :
+
+ssh emalletcovic@osr-etudiant.unistra.fr
+
+puis entré le mot de passe
+
+
+
+        entré cette commande:
+
+sqlplus emalletcovic@osr-oracle.unistra.fr:1521/osr
+
+puis entré le mot de passe 
