@@ -86,3 +86,28 @@ void dessineTriangle(int n){
 int main(){
     dessineTriangle(5);
 }
+
+
+//-------------------------exercice8------------------
+
+
+float suite_rec(int n){
+    if (n == 0){
+        return 1.f;
+    }else{
+        return suite(n-1)/n;
+    }
+}
+
+
+//-----------------------exercice9----------------------
+
+
+int estDivisible (int a,int n){
+    if (a % n == 0){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
