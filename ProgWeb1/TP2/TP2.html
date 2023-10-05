@@ -10,8 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
     <h1>Formulaire</h1>
+    <p>Ceci est un quiz html css veuillez répondre aux questions :</p>
     <form action="sendData.php" method="post" oninput="result.value=level.value">
-        
+        <label for="prenom">Prénom : </label><input type="text" name="prenom" placeholder="Votre Prénom" required>
+        <label for="nom">Nom complet : </label><input type="text" name="nom" placeholder="Votre nom complet" required>
+        <label for="email">Email : </label><input type="email" name="email" placeholder="Votre email" pattern=".+@.+\..+">
+
+
+
+
+        <button>Envoyer</button>
     </form>
 </body>
 </html>
