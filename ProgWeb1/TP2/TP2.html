@@ -3,18 +3,106 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Formulaire</title>
-    <meta name="description" content="Voici un Formulaire">
-    <meta name="keywords" content="Formulaire">
+    <title>Quiz html/css</title>
+    <meta name="description" content="Voici mon quiz">
+    <meta name="keywords" content="quiz, html, css">
     <meta name="author" content="Mallet--Covic Eros">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<!---->
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 20pt;
+        }
+        input{  
+            margin-bottom: 10pt;
+        }
+        .quiz{
+            margin-right: 10px;
+        }
+        .radio{
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+            margin: 0.5rem;
+        }
+        textarea{
+            width:300px;
+            height:100px;
+        }
+        fieldset{
+            width: 50px;
+            border:1px solid rgb(39, 36, 36);
+            border-radius: 15px;
+            margin:5px 10px;
+            margin-bottom: 30px;
+            line-height: 35px;
+        }
+        input[required]:invalid {border:2px red solid;}
+        input[required]:valid {border:2px green solid;}
+
+    </style>
+
+</head>    
 <body>
-    <h1>Formulaire</h1>
+    <h1>Quiz HTML/CSS</h1>
     <p>Ceci est un quiz html css veuillez répondre aux questions :</p>
     <form action="sendData.php" method="post" oninput="result.value=level.value">
-        <label for="prenom">Prénom : </label><input type="text" name="prenom" placeholder="Votre Prénom" required>
-        <label for="nom">Nom complet : </label><input type="text" name="nom" placeholder="Votre nom complet" required>
-        <label for="email">Email : </label><input type="email" name="email" placeholder="Votre email" pattern=".+@.+\..+">
+        <h2>Entrer vos coordonées : </h2>
+        <fieldset>
+            <label class="saisieCoord" for="prenom">Prénom : </label><input type="text" id="prenom" name="prenom" placeholder="Votre Prénom" required>
+            <label class="saisieCoord" for="nom">Nom complet : </label><input type="text" id="nom" name="nom" placeholder="Votre nom complet" required>
+            <label class="saisieCoord" for="email">Email : </label><input type="email" id="email" name="email" placeholder="Votre email" pattern=".+@.+\..+" required><br>
+        </fieldset>
+        
+
+        <h2>Début du quiz : </h2><br>
+        <span class="date">Date : </span><input type="date" name="date">
+        <br>
+        <span class="quiz">Quel est la balise pour retourner à la ligne en html ? :</span>
+        <label for="choix1">Choix1</label>
+        <input type="radio" name="radio" id="choix1" value="1">
+        <label for="choix2">Choix2</label>
+        <input type="radio" name="radio" id="choix2" value="2">
+        <label for="choix3">Choix3</label>
+        <input type="radio" name="radio" id="choix3" value="3">
+        
+        <br>
+
+
+        <span class="quiz">Checkbox</span>
+        <label for="cb1">CB 1</label>
+        <input type="checkbox" name="cb[]" id="cb1" value="1">
+        <label for="cb2">CB 2</label>
+        <input type="checkbox" name="cb[]" id="cb2" value="2">
+        <label for="cb3">CB 3</label>
+        <input type="checkbox" name="cb[]" id="cb3" value="3">
+        <br>
+
+
+        <select name="listeChoixMultiple[]" multiple size="5">
+            <optgroup label="Group1">
+                <option value="1.1">Option 1.1</option>
+                <option value="1.2">Option 1.2</option>
+                <option value="1.3">Option 1.3</option>
+            </optgroup>
+            <optgroup label="Group2">
+                <option value="2.1">Option 2.1</option>
+                <option value="2.2">Option 2.2</option>
+                <option value="2.3">Option 2.3</option>
+            </optgroup>
+            <optgroup label="Group3">
+                <option value="3.1">Option 3.1</option>
+                <option value="3.2">Option 3.2</option>
+                <option value="3.3">Option 3.3</option>
+            </optgroup>
+        </select><br>
+
+        <span class="quiz">Comment</span><br>
+        <textarea name="comment" placeholder="Type your comment here..."></textarea><br>
+
+
 
 
 
