@@ -8,15 +8,11 @@
     <meta name="keywords" content="quiz, html, css">
     <meta name="author" content="Mallet--Covic Eros">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!---->
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
             margin: 20pt;
-        }
-        input{  
-            margin-bottom: 10pt;
         }
         .quiz{
             margin-right: 10px;
@@ -26,6 +22,12 @@
             justify-content: space-between;
             width: 60%;
             margin: 0.5rem;
+        }
+        input,textarea {
+            margin-bottom: 10pt;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         textarea{
             width:300px;
@@ -38,6 +40,10 @@
             margin:5px 10px;
             margin-bottom: 30px;
             line-height: 35px;
+
+        }
+        select{
+            width: 400px;
         }
         input[required]:invalid {border:2px red solid;}
         input[required]:valid {border:2px green solid;}
@@ -58,49 +64,57 @@
         
 
         <h2>Début du quiz : </h2><br>
-        <span class="date">Date : </span><input type="date" name="date">
+        <span class="date">Date du quiz : </span><input type="date" name="date" required>
         <br>
-        <span class="quiz">Quel est la balise pour retourner à la ligne en html ? :</span>
-        <label for="choix1">Choix1</label>
+        <hr>
+        <span class="quiz">1.  Comment considerez votre niveaux ? (0 à 10) :</span><input type="range" name="level" min="0" max="10" value="5"> <output name="result">5</output><br>
+        <hr>
+        <span class="quiz">2.  Quel est la balise pour retourner à la ligne en html ? :</span>
+        <label for="choix1">br</label>
         <input type="radio" name="radio" id="choix1" value="1">
-        <label for="choix2">Choix2</label>
+        <label for="choix2">h1</label>
         <input type="radio" name="radio" id="choix2" value="2">
-        <label for="choix3">Choix3</label>
+        <label for="choix3">b</label>
         <input type="radio" name="radio" id="choix3" value="3">
         
         <br>
+        <hr>
 
-
-        <span class="quiz">Checkbox</span>
-        <label for="cb1">CB 1</label>
+        <span class="quiz">3.  Quels sont des attributs css ? :</span>
+        <label for="cb1">border</label>
         <input type="checkbox" name="cb[]" id="cb1" value="1">
-        <label for="cb2">CB 2</label>
+        <label for="cb2">margin</label>
         <input type="checkbox" name="cb[]" id="cb2" value="2">
-        <label for="cb3">CB 3</label>
+        <label for="cb3">espace</label>
         <input type="checkbox" name="cb[]" id="cb3" value="3">
         <br>
+        
+        <hr>
 
 
-        <select name="listeChoixMultiple[]" multiple size="5">
+        <label for="choixMult">4.  Lesquels sont des languages de programation web ? :</label><br>
+        <select name="listeChoixMultiple[]" id="choixMult" multiple size="5">
             <optgroup label="Group1">
-                <option value="1.1">Option 1.1</option>
-                <option value="1.2">Option 1.2</option>
-                <option value="1.3">Option 1.3</option>
+                <option value="1.1">HTML</option>
+                <option value="1.2">JAVA</option>
+                <option value="1.3">Python</option>
             </optgroup>
             <optgroup label="Group2">
-                <option value="2.1">Option 2.1</option>
-                <option value="2.2">Option 2.2</option>
-                <option value="2.3">Option 2.3</option>
+                <option value="2.1">haskell</option>
+                <option value="2.2">CSS</option>
+                <option value="2.3">c</option>
             </optgroup>
             <optgroup label="Group3">
-                <option value="3.1">Option 3.1</option>
-                <option value="3.2">Option 3.2</option>
-                <option value="3.3">Option 3.3</option>
+                <option value="3.1">c++</option>
+                <option value="3.2">javascript</option>
+                <option value="3.3">cobol</option>
             </optgroup>
         </select><br>
 
-        <span class="quiz">Comment</span><br>
-        <textarea name="comment" placeholder="Type your comment here..."></textarea><br>
+        <hr>
+
+        <span class="quiz">5.  Créez un button en html: </span><br>
+        <textarea name="comment" placeholder="Entrez votre text ici..."></textarea><br>
 
 
 
