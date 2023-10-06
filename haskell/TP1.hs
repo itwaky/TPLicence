@@ -189,9 +189,9 @@ paiement(s,a,b,c,d) =
         then paiement(s-200,a-1,b,c,d)
     else if s>=b && b /=0
         then paiement(s-100,a,b-1,c,d)
-    else if s>=c && c/=0
+    else if s>=c && c /=0
         then paiement(s-50,a,b,c-1,d)
-    else if s>=d && d/=0
+    else if s>=d && d /=0
         then paiement(s-10,a,b,c,d-1)
     else
         False
@@ -209,7 +209,12 @@ nb_add_fib(n) =
 
 -- 4
 
--- demander au prof
+my_fib n =
+    if n == 0
+        then (0,1)
+    else
+        let (fib, fib1) = my_fib(n-1) in
+            (fib1,fib+fib1)
 
 
 -- 5
