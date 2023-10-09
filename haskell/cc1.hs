@@ -30,3 +30,9 @@ mult a b =
         then (2*a)*(b`div`2) + mult a (b-1)
     else
         mult a (b-1)
+
+
+
+-- ---------------------Exercice3----------------------
+
+

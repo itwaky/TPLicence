@@ -111,33 +111,39 @@ int main(){
     }
     
 }
-
 */
 
 //------------------exercice3-------------------------
 
-/*
 
-int factoriel(int n){
-    if (n == 0 || n == 1){
-        return 1;
-    }else{
-        return factoriel(n-1) * n;
-    }
-}
 
-float kepler(int e){
-    if (e == 1 || e == 0){
-        return 2;
-    }else{
-        return kepler(e-1) + (float) 1/(factoriel(e));
-    }
-}
-
-int main(){
-    printf("%f\n", kepler(10));
-}
-*/
+// int factoriel(int n){
+//     if (n == 0 || n == 1){
+//         return 1;
+//     }else{
+//         return factoriel(n-1) * n;
+//     }
+// }
+// 
+// float neper(float eps){
+//     float s = 0.f;
+//     float t = 0.f;
+//     int k = 0;
+// 
+//     do{
+//         t = 1.0/factoriel(k);
+//         s+=t;
+//         k++;
+//     }
+//     while (t>eps/3);
+// 
+//     return s;
+//     
+// }
+// int main(){
+//     float e = 0.00001;
+//     printf("e= %.12f a %.12f pres \n", neper(e), e);
+// }
 
 
 
@@ -145,20 +151,19 @@ int main(){
 
 
 
-
-void hanoi(int n, int depart, int inter, int arrivee){
+void hanoi(int n, int depart, int inter, int arrive ){
     if (n == 1){
-        printf("Deplacement de la tour %d a la tour %d\n", depart, arrivee);
+        printf("Deplacer de la tour %d a la tour %d\n", depart,arrive);
     }else{
-        printf("Deplacement de la tour %d a la tour %d\n", inter, arrivee);
-        hanoi(n-1, depart, arrivee, inter);
-        printf("Deplacement de la tour %d a la tour %d\n", depart, inter);
-        hanoi(n-1,arrivee, inter, depart);
+        hanoi(n-1, depart, arrive,inter);
+        printf("Deplacer de la tour %d a la tour %d\n", depart, arrive);
+        hanoi(n-1,inter,depart,arrive);
     }
 }
-// trouver le millieu du problème 
+
+
 
 
 int main(){
-    hanoi(5, 1, 2, 3);
+    hanoi(3, 1, 2, 3);
 }
