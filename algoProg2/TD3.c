@@ -76,19 +76,35 @@ void permutationN(int tab[], int size, int n){
 }
 
 
-int main(){
-    int tab[6] = {2,23,28,12, 16, 27};
-    for (int i = 0;i<6;++i){
-        printf("%d ", tab[i]);
+// int main(){
+//     int tab[6] = {2,23,28,12, 16, 27};
+//     for (int i = 0;i<6;++i){
+//         printf("%d ", tab[i]);
+//     }
+//     printf("\n");
+//     permutation(tab, 6);
+//     for (int i = 0;i<6;++i){
+//         printf("%d ", tab[i]);
+//     }
+//     printf("\n");
+// }
+//--------------------exercic6-----------------------------
+
+
+
+//+32 
+
+void Maj(char str[], int size){
+    for(int i = 0;i>size;++i){
+        str[i] = str[i] - 32;
     }
-    printf("\n");
-    permutation(tab, 6);
-    for (int i = 0;i<6;++i){
-        printf("%d ", tab[i]);
+}
+
+int main(){
+    char str[] = "bonjour";
+    Maj(str, 7);
+    for(int i = 0; i<7;++i){
+        printf("%c", str[i] - 32);
     }
     printf("\n");
 }
-//--------------------exercic8-----------------------------
-
-
-
