@@ -36,3 +36,30 @@ conwayNieme n =
         then 1
     else
         conwaySuiv (conwayNieme (n-1))
+
+
+
+
+
+-- -----------------------premiercc1---------------------
+
+
+-- -------------------------exercice1-------------------------
+
+base2 n =
+    if n <= 1
+        then show(n)
+    else if n `mod` 2 == 0
+        then base2 (n `div` 2) ++ "0"
+    else
+        base2 (n `div` 2) ++ "1 "
+
+
+-- ---------------------------exercice2---------------------
+
+basen b n =
+    if n <= b
+        then show(n)
+    else
+        basen b (n `div` b) ++ show(n `mod` b)
+
