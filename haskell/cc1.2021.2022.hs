@@ -20,9 +20,19 @@ nbDers c n =
 -- ----------------------------exercice3--------------------
 
 conwaySuiv n = 
-    if n == 1
-        then 11
+    if n == 0
+        then 0
     else
         let a = n `mod` 10 in
         let b = nbDers a n in
-        let c = 
+        let suiv = oteDers b n in
+        let c = b * 10 + a in conwaySuiv suiv * 100 + c
+
+-- -------------------------exercice4------------------------
+
+
+conwayNieme n =
+    if n == 1
+        then 1
+    else
+        conwaySuiv (conwayNieme (n-1))
