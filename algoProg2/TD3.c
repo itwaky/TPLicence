@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdbool.h>
 
 //------------------------------------exercice1--------------------------------
 
@@ -263,4 +263,13 @@ int occurence(int tab[], int size, int elem){
 
 //-------------------------------exercice13-----------------------------
 
+//--------------------------Exercice15----------------------------------
 
+
+int dichotomie(int taille, int x){
+    if (taille == 0){
+        return 0;
+    }else if{
+        
+    }
+}
