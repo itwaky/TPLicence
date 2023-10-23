@@ -93,10 +93,10 @@ char plusFrequent(char str[]){
 
 void decode_chaine(char str[]){
     int plusFreq = int_of_char(plusFrequent(str));
-    int decalage = plusFreq - int_of_char('E');
+    int decalage = int_of_char('E') - plusFreq;
     printf("Le décalage est de : %d \n", decalage);
     if (decalage<0){
-        decalage = decalage + 25;
+        decalage = decalage + 26;
     }
     code_messageN(str, decalage);
 }
@@ -119,6 +119,5 @@ int main(){
 }
 
 
-//--------------------------------exercice2-----------------------------
 
 

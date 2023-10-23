@@ -216,7 +216,7 @@ int estPalindrome(char tab[]){
 //--------------------------------exercice10------------------------------
 
 
-int estEgaux(int tab1[], int tab2[], int size){
+int estEgaux(const int tab1[], const int tab2[], int size){
     for(int i = 0; i<size; ++i){
         if (tab1[i] != tab2[i]){
             return 0;
@@ -237,7 +237,7 @@ int estEgaux(int tab1[], int tab2[], int size){
 //--------------------------------exercice11-----------------------------
 
 
-int rechercheIndice(int tab[], int size, int elem){
+int rechercheIndice(const int tab[], int size, int elem){
     for(int i = 0; i<size; ++i){
         if (tab[i] == elem){
             return i;
@@ -250,7 +250,7 @@ int rechercheIndice(int tab[], int size, int elem){
 //--------------------------------exercice12---------------------------
 
 
-int occurence(int tab[], int size, int elem){
+int occurence(const int tab[], int size, int elem){
     int nb = 0;
     for(int i = 0; i<size; ++i){
         if(tab[i] == elem){
@@ -265,11 +265,113 @@ int occurence(int tab[], int size, int elem){
 
 //--------------------------Exercice15----------------------------------
 
-
-int dichotomie(int taille, int x){
-    if (taille == 0){
+int dichotomie(int t[], int taille, int x){
+    if (t[taille] == x){
+        return 1;
+    }else if (taille == 0){
         return 0;
-    }else if{
-        
+    }else if (t[taille / 2] > x){
+        printf("Inferieur : %d\n", taille/2);
+        return dichotomie(t, taille/2, x);
+    }else{
+        printf("Superieur : %d\n", (taille + taille/2)/2);
+        return dichotomie(t, (taille + taille/2)/2, x);
     }
 }
+
+
+// int main(){
+//     int t[5] = {1,3,4,5,6};
+//     int nb = 4;
+//     printf("Entier %d est dans le tableau T ? : %d\n", nb, dichotomie(t, 4, nb));
+// }
+
+
+//------------------------------------exercice18-------------------------
+
+
+//---------1
+
+int nombreDeZero(int matrice[], int sizey , int sizex){
+    int total = 0;
+    for(int i = 0; i<sizey; i++){
+        for(int j = 0; j<sizex; j++){
+            if(matrice[i][j] == 0){
+                total++;
+            }
+        }
+    }
+    return total;
+}
+
+
+//---------2
+
+int estDiagonale(int matrice[], int sizey, int sizex){
+    int nb = matrice[0][0];
+    for(int i = 0; i<sizey; ++i){
+        for(int j = 0; j<sizex; ++j){
+            if(i == j){
+                if(matrice[i][j] != nb){
+                    return 0;
+                }
+            }
+        }
+    }
+    return 1;
+}
+
+
+//--------3
+
+
+int estSymetrique(int matrice[], int sizey, int sizex){
+    for(int i = 0; i<sizey; ++i){
+        for(int j = 0; j<sizex; ++j){
+            if(matrice[i][j] != matrice[j][i]){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
+
+//---------4
+
+void transpose(int matrice[], int sizey, int sizex){
+    int temp = 0;
+    for(int i = 0; i<sizey; ++i){
+        for(int j = 0; j<sizex; ++j){
+            temp = matrice[i][j];
+            matrice[i][j] = matrice[j][i];
+            matrice[j][i] = temp;
+        }
+    }
+}
+
+
+//-----------5
+
+void addition(int matrice1[], int matrice2[], int sizey, int sizex){
+    for(int i = 0; i<sizey; ++i){
+        for(int j = 0; j<sizex; ++j){
+            matrice1[i][j] += matrice2[i][j];
+        }
+    }
+}
+
+//----------6
+
+void multiplication(int matrice1[], int matrice2[], int sizey, int sizex){
+    for(int i = 0; i<sizey; ++i){
+        for(int j = 0; j<sizex; ++j){
+            matrice1[i][j] *= matrice2[i][j];
+        }
+    }
+}
+
+
+//-------------------------------exercice19-----------------------------
+
+
