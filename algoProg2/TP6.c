@@ -1,9 +1,6 @@
 #include <stdio.h>
 
 
-//-----------------------------exercice1--------------------------------
-
-
 
 int int_of_char (char c) {
     return (c-65);
@@ -102,6 +99,7 @@ void decode_chaine(char str[]){
 }
 
 int main(){
+
     // char str[99];
     // int decal = 0;
     // printf("Entre une chaine de caractère en majuscule a coder : ");
@@ -111,6 +109,8 @@ int main(){
     // code_messageN(str, decal);
     // printf("Le message coder est  : ");
     // affiche_str(str);
+
+
     char str[] = "IYHCVSHSLAAYLSHWSBZMYLXBLUALLZASLL";
     printf("Lettre + frequente est : %c \n", plusFrequent(str));
     decode_chaine(str);
