@@ -292,10 +292,10 @@ int dichotomie(int t[], int taille, int x){
 
 //---------1
 
-int nombreDeZero(int matrice[], int sizey , int sizex){
+int nombreDeZero(int matrice[][3], int size){
     int total = 0;
-    for(int i = 0; i<sizey; i++){
-        for(int j = 0; j<sizex; j++){
+    for(int i = 0; i<size; i++){
+        for(int j = 0; j<size; j++){
             if(matrice[i][j] == 0){
                 total++;
             }
@@ -307,10 +307,10 @@ int nombreDeZero(int matrice[], int sizey , int sizex){
 
 //---------2
 
-int estDiagonale(int matrice[], int sizey, int sizex){
+int estDiagonale(int matrice[][3], int size){
     int nb = matrice[0][0];
-    for(int i = 0; i<sizey; ++i){
-        for(int j = 0; j<sizex; ++j){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size; ++j){
             if(i == j){
                 if(matrice[i][j] != nb){
                     return 0;
@@ -325,9 +325,9 @@ int estDiagonale(int matrice[], int sizey, int sizex){
 //--------3
 
 
-int estSymetrique(int matrice[], int sizey, int sizex){
-    for(int i = 0; i<sizey; ++i){
-        for(int j = 0; j<sizex; ++j){
+int estSymetrique(int matrice[][3], int size){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size; ++j){
             if(matrice[i][j] != matrice[j][i]){
                 return 0;
             }
@@ -339,13 +339,11 @@ int estSymetrique(int matrice[], int sizey, int sizex){
 
 //---------4
 
-void transpose(int matrice[], int sizey, int sizex){
-    int temp = 0;
-    for(int i = 0; i<sizey; ++i){
-        for(int j = 0; j<sizex; ++j){
-            temp = matrice[i][j];
-            matrice[i][j] = matrice[j][i];
-            matrice[j][i] = temp;
+void transpose(int matrice[][3],int matrice2[][3], int size){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size; ++j){
+            matrice2[i][j] = matrice[j][i];
+            matrice2[j][i] = matrice[i][j];
         }
     }
 }
@@ -353,9 +351,9 @@ void transpose(int matrice[], int sizey, int sizex){
 
 //-----------5
 
-void addition(int matrice1[], int matrice2[], int sizey, int sizex){
-    for(int i = 0; i<sizey; ++i){
-        for(int j = 0; j<sizex; ++j){
+void addition(int matrice1[][3], int matrice2[][3], int size){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size; ++j){
             matrice1[i][j] += matrice2[i][j];
         }
     }
@@ -363,9 +361,9 @@ void addition(int matrice1[], int matrice2[], int sizey, int sizex){
 
 //----------6
 
-void multiplication(int matrice1[], int matrice2[], int sizey, int sizex){
-    for(int i = 0; i<sizey; ++i){
-        for(int j = 0; j<sizex; ++j){
+void multiplication(int matrice1[][3], int matrice2[][3], int size){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size; ++j){
             matrice1[i][j] *= matrice2[i][j];
         }
     }
@@ -375,3 +373,6 @@ void multiplication(int matrice1[], int matrice2[], int sizey, int sizex){
 //-------------------------------exercice19-----------------------------
 
 
+void sudoku(int matrice[][3], int size){
+    
+}
