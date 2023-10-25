@@ -78,29 +78,62 @@ int estSymetrique(int matrice[][3], int size){
 
 //--------5
 
-void transpose(int matrice[][3], int size){
-    int temp = 0;
+void transpose(int matrice[][3],int matrice2[][3], int size){
     for(int i = 0; i<size; ++i){
         for(int j = 0; j<size; ++j){
-            // la deuxième partie de la matrice se recopie une deuxième fois a coriger
-            temp = matrice[i][j];
-            matrice[i][j] = matrice[j][i];
-            matrice[j][i] = temp;
-            printf("%d ",matrice[i][j]);
+            matrice2[i][j] = matrice[j][i];
+            matrice2[j][i] = matrice[i][j];
         }
-        printf("\n");
     }
-    printf("\n");
 }
 
 
-int main(){
-    int matrice[3][3] = {{1,4,8},
-                         {5,5,8},
-                         {7,8,9}};
-    affiche(matrice, 3);
-    
-    transpose(matrice, 3);
+// int main(){
+//     int matrice[3][3] = {{1,4,8},
+//                          {5,5,8},
+//                          {7,8,9}};
+//     int matrice2[3][3] = {};
+// 
+//     affiche(matrice, 3);
+//     
+//     transpose(matrice,matrice2, 3);
+// 
+//     affiche(matrice2, 3);
+// }
 
-    affiche(matrice, 3);
+
+//--------6
+
+void addition(int matrice[][3], int matrice2[][3], int size){
+    for(int i = 0; i<size ; ++i){
+        for(int j = 0; j<size; ++j){
+            matrice[i][j] = matrice[i][j] + matrice2[i][j];
+        }
+    }
 }
+
+// int main(){
+//     int matrice[3][3] = {{1,4,8},
+//                          {5,5,8},
+//                          {7,8,9}};
+//     int matrice2[3][3] = {{1,4,8},
+//                           {5,5,8},
+//                           {7,8,9}};
+// 
+// 
+//     addition(matrice, matrice2, 3);
+//     affiche(matrice, 3);
+// }
+
+
+//---------7
+
+
+void multiplication(int matrice[][3], int matrice2[][3], int size){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size; ++j){
+            matrice[i][j] = matrice[i][j] * matrice2[i][j];
+        }
+    }
+}
+

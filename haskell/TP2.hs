@@ -29,3 +29,13 @@
 -- -------------------------------exercice2-------------------------------------
 
 
+f x = 2*x^2+1
+
+g x = cos x
+
+derivee f x = let h = 1e-6 in (f (x + h) - f x) / h
+
+compose f g x = f (g x)
+
+
+
