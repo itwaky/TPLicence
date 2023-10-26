@@ -287,15 +287,54 @@ int dichotomie(int t[], int taille, int x){
 // }
 
 
+
+//---------------------------exercice16--------------------------
+
+
+typedef struct fraction
+{
+    int denominateur;
+    int numerateur;
+
+}Fraction;
+
+Fraction simplifie(Fraction frac){
+    frac.denominateur = frac.denominateur / pgcd(frac.denominateur, frac.numerateur);
+    frac.numerateur = frac.numerateur / pgcd(frac.denominateur, frac.numerateur);
+    return frac;
+}
+
+int main(){
+    Fract a = {12,6};
+    a = simplifie(a);
+}
+
+Fraction multiFrac(Fraction frac1, Fraction frac2){
+    frac1.denominateur *= frac2.denominateur;
+    frac1.numerateur *= frac2.numerateur;
+    frac1 = simplifie(f);
+    return frac1;
+}
+
+
+
+
+
+
+
+
 //------------------------------------exercice18-------------------------
 
 
+#define N 3
+typedef int Matrice[N][N];
+
 //---------1
 
-int nombreDeZero(int matrice[][3], int size){
+int nombreDeZero(const Matrice matrice){
     int total = 0;
-    for(int i = 0; i<size; i++){
-        for(int j = 0; j<size; j++){
+    for(int i = 0; i<N; i++){
+        for(int j = 0; j<N; j++){
             if(matrice[i][j] == 0){
                 total++;
             }
@@ -307,12 +346,11 @@ int nombreDeZero(int matrice[][3], int size){
 
 //---------2
 
-int estDiagonale(int matrice[][3], int size){
-    int nb = matrice[0][0];
-    for(int i = 0; i<size; ++i){
-        for(int j = 0; j<size; ++j){
+int estDiagonale(const Matrice matrice){
+    for(int i = 0; i<N; ++i){
+        for(int j = 0; j<N; ++j){
             if(i == j){
-                if(matrice[i][j] != nb){
+                if(i != j && matrice[i][j] != 0){
                     return 0;
                 }
             }
@@ -325,9 +363,9 @@ int estDiagonale(int matrice[][3], int size){
 //--------3
 
 
-int estSymetrique(int matrice[][3], int size){
-    for(int i = 0; i<size; ++i){
-        for(int j = 0; j<size; ++j){
+int estSymetrique(const Matrice matrice){
+    for(int i = 0; i<N; ++i){
+        for(int j = 0; j<N; ++j){
             if(matrice[i][j] != matrice[j][i]){
                 return 0;
             }
@@ -339,21 +377,31 @@ int estSymetrique(int matrice[][3], int size){
 
 //---------4
 
-void transpose(int matrice[][3],int matrice2[][3], int size){
-    for(int i = 0; i<size; ++i){
-        for(int j = 0; j<size; ++j){
-            matrice2[i][j] = matrice[j][i];
-            matrice2[j][i] = matrice[i][j];
+// void transpose(Matrice matrice,Matrice matrice2){
+//     for(int i = 0; i<N; ++i){
+//         for(int j = 0; j<N; ++j){
+//             matrice2[i][j] = matrice[j][i];
+//             matrice2[j][i] = matrice[i][j];
+//         }
+//     }
+// }
+
+
+void transpose(Matrice matrice){
+    for(int i = 0; i<N; ++i){
+        for(int j = 0; j<i; ++j){
+            temp = matrice[i][j];
+            matrice[i][j] = matrice[j][i];
+            matrice[j][i] = temp;
         }
     }
 }
 
-
 //-----------5
 
-void addition(int matrice1[][3], int matrice2[][3], int size){
-    for(int i = 0; i<size; ++i){
-        for(int j = 0; j<size; ++j){
+void addition(Matrice matrice1, Matrice matrice2){
+    for(int i = 0; i<N; ++i){
+        for(int j = 0; j<N; ++j){
             matrice1[i][j] += matrice2[i][j];
         }
     }
@@ -361,23 +409,34 @@ void addition(int matrice1[][3], int matrice2[][3], int size){
 
 //----------6
 
-void multiplication(int matrice1[][3], int matrice2[][3], int size){
-    for(int i = 0; i<size; ++i){
-        for(int j = 0; j<size; ++j){
-            matrice1[i][j] *= matrice2[i][j];
-        }
-    }
-}
+// void multiplication(Matrice matrice1, Matrice matrice2){
+//     Matrice temp = {{0}};// chiant a innitialiser donc marche pas;
+//     for(int i = 0; i<N; ++i){
+//         for(int j = 0; j<N; ++j){
+//             int total = 0;
+//             for(int k = 0; k<N; ++k){
+//                 total += matrice1[i][k] * matrice2[k][j];
+//             }
+//             temp[i][j] = total;
+//         }
+//     }
+//     for(int i = 0 ; i<N ; ++i){
+//         for(int j = 0; j<N; ++j){
+//             matrice1[i][j] = temp[i][j];
+//         }
+//     }
+// }
 
 
 //-------------------------------exercice19-----------------------------
 
+#define M 3
 
-int sudoku(int matrice[][3], int size){
-    for(int i = 0 ; i<size ; ++i){
+int sudoku(const int matrice[M][M]){
+    for(int i = 0 ; i<M ; ++i){
         int premierLigne = matrice[i][0];
         int premierCol = matrice[0][i];
-        for(int j = 1 ; j<size ; ++j){
+        for(int j = 1 ; j<M ; ++j){
             if (premierLigne == matrice[i][j]){
                 return 0;
             }
@@ -390,15 +449,16 @@ int sudoku(int matrice[][3], int size){
 }
 
 int main(){
-    int matriceValide[3][3] = {{2,8,9},
-                               {7,3,5},
-                               {1,6,4}};
+    Matrice matriceValide = {{2,8,9},
+                             {7,3,5},
+                             {1,6,4}};
     
-    int matrice[3][3] = {{1,4,8},
-                         {5,5,8},
-                         {7,8,9}};
+    Matrice matrice = {{1,4,8},
+                       {5,5,8},
+                       {7,8,9}};
     
-    printf("Matrice valide : %d \n", sudoku(matriceValide, 3));
 
-    printf("Matrice invalide : %d \n", sudoku(matrice, 3));
+    printf("Matrice valide : %d \n", sudoku(matriceValide));
+
+    printf("Matrice invalide : %d \n", sudoku(matrice));
 }
