@@ -35,7 +35,12 @@ g x = cos x
 
 derivee f x = let h = 1e-6 in (f (x + h) - f x) / h
 
-compose f g x = f (g x)
+compose g f = g(f)
+
+
+
+
+
 
 
 
