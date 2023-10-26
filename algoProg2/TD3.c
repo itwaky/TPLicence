@@ -373,6 +373,32 @@ void multiplication(int matrice1[][3], int matrice2[][3], int size){
 //-------------------------------exercice19-----------------------------
 
 
-void sudoku(int matrice[][3], int size){
+int sudoku(int matrice[][3], int size){
+    for(int i = 0 ; i<size ; ++i){
+        int premierLigne = matrice[i][0];
+        int premierCol = matrice[0][i];
+        for(int j = 1 ; j<size ; ++j){
+            if (premierLigne == matrice[i][j]){
+                return 0;
+            }
+            if (premierCol == matrice[j][i]){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
+int main(){
+    int matriceValide[3][3] = {{2,8,9},
+                               {7,3,5},
+                               {1,6,4}};
     
+    int matrice[3][3] = {{1,4,8},
+                         {5,5,8},
+                         {7,8,9}};
+    
+    printf("Matrice valide : %d \n", sudoku(matriceValide, 3));
+
+    printf("Matrice invalide : %d \n", sudoku(matrice, 3));
 }
