@@ -29,13 +29,21 @@
 -- -------------------------------exercice2-------------------------------------
 
 
-f = \x -> 2*x^2+1
+f = \x -> 2*x**2+1
 
 g = \x -> cos x
 
-derivee f x = let h = 1.0000001 in (f (x + h) - f x) / h
+derivee f x = let h = 0.0000001 in (f (x + h) - f x) / h
 
-compose g f x = g(f x)  
+compose g f x = g(f x)
+
+-- derivee (compose g f) 2
+
+
+-- --------------------------exercice3------------------------------------
+
+-- (derivee f 2) * (compose (derivee g) f 2)
+
 
 
 
