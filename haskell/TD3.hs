@@ -127,12 +127,73 @@ renverseOpti(n) = renverseAux(n,0)
 
 
 exist_diviseur(n,d)=
-    if d == n 
+    if d < 2
         then False
-    else if n `mod` d == 0
+    else if n `mod` d==0
         then True
     else
-        exist_diviseur(n,d + 1)
+        exist_diviseur(n,(d-1))
+
+
+est_premier n =
+    if n == 1
+        then False
+    else if n==2
+        then True
+    else
+        not(exist_diviseur (n, (n-1)))
+
+
+
+
+
+-- ---------------------exercice4----------------------------
+
+
+
+divisionCouple a b =
+    if a < b
+        then (0,a)
+    else
+        let (q,r) = divisionCouple(a-b) b in (q+1,r)
+
+
+
+-- ----------------exercice5--------------------
+
+chaine_extraite s1 s2 =
+    if s1 == ""
+        then True else if s2 == "" then False
+    else if head s1 == head s2
+        then chaine_extraite(tail s1, tail s2)
+    else
+        chaine_extraite s1, (tail s2)
+
+
+est_debut s1 s2 =
+    if s1 == ""
+        then True
+    else if s2 == ""
+        then False
+    else if head s1 == head s2
+        then est_debut(tail s1) (tail s2)
+    else
+        False
+
+
+
+
+est_sous_chaine s1 s2 =
+    if s1 == ""
+        then True
+    else if s2 == ""
+        then False
+    else if est_debut s1 s2
+        then True
+    else
+        est_sous_chaine s1 (tail s2)
+
+
 
 
 
