@@ -8,7 +8,7 @@ de prix inférieur à 200 euros.
 create view circuit_pas_cher(nc, prix) as (select nc, prix from l2i_circuit where prix<200);
 
 
-select view_name from user_views where view_name = 'circuit_pas_cher';
+select view_name from user_views;
 
 insert into circuit_pas_cher(nc, prix) values(19,199); /* privilèges insuffisants */
 
@@ -21,3 +21,20 @@ utiliser l’option « check option ».
 - peut-on insérer un circuit de prix supérieur à 200 euros à travers la vue ?
 - peut-on modifier le prix d'un circuit appartenant à la vue en changeant son prix à 300 ?
 */
+
+create table mon_circuit(
+    nc number primary key,
+    vdep varchar2(20),
+    varr varchar2(20),
+    prix number(6)
+);
+
+create view mon_circuit_pas_cher(nc, prix) as (select nc, prix from mon_circuit where prix<200);
+
+CREATE VIEW mon_circuit_pas_cher (nc, prix) AS (SELECT nc, prix FROM mon_circuit WHERE prix < 200 WITH CHECK OPTION);
+
+
+
+grant select on table circuit_pas_cher to nomDeLaPersonne;
+
+SELECT * FROM user_tab_privs;
