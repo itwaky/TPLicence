@@ -10,60 +10,73 @@
 //1A
 /*
 {
-  "idC" : "1",
+  "idConduite" : 1,
   "date": "2023-04-23",
-  "heureDepart" : "12",
-  "heureArrive" : "14",
-  "kilometre" : "20"
+  "heureDepart" : "12:00",
+  "heureArrive" : "14:00",
+  "kilometre" : 20
 }
+
+{"idConduite":1,"date":"2023-04-23","heureDepart":"12:00","heureArrive":"14:00","kilometre":20}
+
 */
 
 
 
 //1B
 /*
-{
-  "meteo" : [
-    {"idMeteo" : 1, "temps" : "soleil"},
-    {"idMeteo" : 2, "temps" : "pluie"},
-    {"idMeteo" : 3, "temps" : "nuageux"},
-    {"idMeteo" : 4, "temps" : "brouillard"},
-    {"idMeteo" : 5, "temps" : "neige"},
-    {"idMeteo" : 6, "temps" : "gel"}
-  ]
-}
+
+
+[
+  {"idMeteo" : 1, "meteo" : "soleil"},
+  {"idMeteo" : 2, "meteo" : "pluie"},
+  {"idMeteo" : 3, "meteo" : "nuageux"},
+  {"idMeteo" : 4, "meteo" : "brouillard"},
+  {"idMeteo" : 5, "meteo" : "neige"},
+  {"idMeteo" : 6, "meteo" : "gel"}
+]
+
+
+[{"idMeteo":1,"meteo":"soleil"},{"idMeteo":2,"meteo":"pluie"},{"idMeteo":3,"meteo":"nuageux"},{"idMeteo":4,"meteo":"brouillard"},{"idMeteo":5,"meteo":"neige"},{"idMeteo":6,"meteo":"gel"}]
+
 */
 
 
 //1C
 
 /*
-{
-  [
-    {"idMeteo" : 1, "temps"  : "soleil"},
-    {"idMeteo" : 2, "temps" : "pluie"},
-    {"idMeteo" : 3, "temps" : "nuageux"},
-    {"idMeteo" : 4, "temps" : "brouillard"},
-    {"idMeteo" : 5, "temps" : "neige"},
-    {"idMeteo" : 6, "temps" : "gel"}
-  ],
-  [
-    {"idTrafic" : 1, "condition" : "bouchon"},
-    {"idTrafic" : 2, "condition" : "ralenti"},
-    {"idTrafic" : 3, "condition" : "fluide"}
-  ],
-  [
-    {"idExp" : 1, "experience" : "bonne"},
-    {"idExp" : 2, "experience" : "moyenne"},
-    {"idExp" : 3, "experience" : "mauvaise"}
-  ],
-  [
-    {"idRoute" : 1, "route" : "autoroute"},
-    {"idRoute" : 2, "route" : "campagne"},
-    {"idRoute" : 3, "route" : "ville"},
-    {"idRoute" : 4, "route" : "mixte"}
-  ]
-}
+
+[
+  {"idMeteo" : 1, "meteo" : "soleil"},
+  {"idMeteo" : 2, "meteo" : "pluie"},
+  {"idMeteo" : 3, "meteo" : "nuageux"},
+  {"idMeteo" : 4, "meteo" : "brouillard"},
+  {"idMeteo" : 5, "meteo" : "neige"},
+  {"idMeteo" : 6, "meteo" : "gel"}
+]
+
+
+[
+  {"idTrafic" : 1, "trafic" : "bouchon"},
+  {"idTrafic" : 2, "trafic" : "ralenti"},
+  {"idTrafic" : 3, "trafic" : "fluide"}
+]
+
+[
+  {"idExp" : 1, "experience" : "bonne"},
+  {"idExp" : 2, "experience" : "moyenne"},
+  {"idExp" : 3, "experience" : "mauvaise"}
+]
+
+
+[
+  {"idTypeRoute" : 1, "route" : "autoroute"},
+  {"idTypeRoute" : 2, "route" : "campagne"},
+  {"idTypeRoute" : 3, "route" : "ville"},
+  {"idTypeRoute" : 4, "route" : "mixte"}
+]
+
+
 */
 
 
@@ -72,37 +85,37 @@
 /*
 [
   {
-    "idC": "1",
+    "idConduite": 1,
     "date": "2023-04-23",
-    "heureDepart": "12",
-    "heureArrive": "14",
-    "kilometre": "20",
-    "idMeteo": "2",
-    "idTrafic": "1",
-    "idExp": "3",
-    "idRoute" : "2"
+    "heureDepart": "12:30",
+    "heureArrive": "14:20",
+    "kilometre": 20,
+    "idMeteo": 2,
+    "idTrafic": 1,
+    "idExp": 3,
+    "idRoute" : 2
   },
   {
-    "idC": "2",
+    "idConduite": 2,
     "date": "2023-04-24",
-    "heureDepart": "11",
-    "heureArrive": "20",
-    "kilometre": "300",
-    "idMeteo": "1",
-    "idTrafic": "2",
-    "idExp": "1",
-    "idRoute" : "1"
+    "heureDepart": "11:23",
+    "heureArrive": "20:23",
+    "kilometre": 300,
+    "idMeteo": 1,
+    "idTrafic": 2,
+    "idExp": 1,
+    "idRoute" : 1
   },
   {
-    "idC": "3",
+    "idConduite": 3,
     "date": "2023-04-28",
-    "heureDepart": "8",
-    "heureArrive": "12",
-    "kilometre": "200",
-    "idMeteo": "3",
-    "idTrafic": "3",
-    "idExp": "2",
-    "idRoute" : "3"
+    "heureDepart": "8:10",
+    "heureArrive": "12:00",
+    "kilometre": 200,
+    "idMeteo": 3,
+    "idTrafic": 3,
+    "idExp": 2,
+    "idRoute" : 3
   }
 ]
 */
