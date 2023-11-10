@@ -1,5 +1,100 @@
 
 #include <stdio.h>
+
+
+
+//--------------------------1.tableau de points----------------------------
+
+
+typedef struct Points
+{
+    int x;
+    int y;
+}Points;
+
+void affichePoint(Points p){
+    printf("(%d,%d), ", p.x, p.y);
+}
+
+
+void affiche_point_tab(Points tab[], int size){
+    for(int i = 0; i<size; ++i){
+        affichePoint(tab[i]);
+    }
+    printf("\n");
+}
+
+
+// void afficheTab(int tab[], int size){
+//     for(int i = 0; i<size; ++i){
+//         printf("%d, ", tab[i]);
+//     }
+//     printf("\n");
+// }
+// 
+// 
+// void bulle(int tab[], int size){
+//     for (int i = 0; i<size; ++i){
+//         for(int j = 0; j<size - i - 1; ++j){
+//             if(tab[j+1]<tab[j]){
+//                 int temp = tab[j];
+//                 tab[j] = tab[j+1];
+//                 tab[j+1] = temp;
+//             }
+//         }
+//     }
+// }
+
+void bullePoint(Points tab[], int size){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size - i - 1; ++j){
+            if ((tab[j].x > tab[j+1].x) || (tab[j].x == tab[j+1].x && tab[j].y>tab[j+1].y)){
+                Points temp = tab[j];
+                tab[j] = tab[j+1];
+                tab[j+1] = temp;
+            }
+        }
+    }
+}
+
+
+
+void bullePointDiag(Points tab[], int size){
+    for(int i = 0; i<size; ++i){
+        for(int j = 0; j<size - i - 1; ++j){
+            if ((tab[j].x + tab[j].y > tab[j+1].x + tab[j+1].y) || (tab[j].x + tab[j].y == tab[j+1].x + tab[j+1].y && tab[j].x>tab[j+1].x)){
+                Points temp = tab[j];
+                tab[j] = tab[j+1];
+                tab[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main(){
+    Points tp [36] = {{3,1}, {3,5}, {4,1},{5,3},{6,2},{3,2}, {5,2}, {3,4},  {3,3}, {6,1},{4,4}, {2,2}, {6,6},{5,5} ,{3,6} , {2,6} ,{1,2}, {2,3},{6,4},  {5,6} , {4,3},{4,6} , {2,4}, {1,1},{6,5}, {4,5}, {2,1}, {5,4}, {2,5},{5,1},{1,3}, {1,4}, {1,5}, {6,3}, {4,2}, {1,6}  };
+
+    affiche_point_tab(tp, 36);
+
+
+    bullePoint(tp, 36);
+
+    affiche_point_tab(tp,36);
+
+
+    bullePointDiag(tp, 36);
+
+    affiche_point_tab(tp, 36);
+
+
+}
+
+
+
+
+
+
+
 //----------------------------2.Matrices--------------------------
 
 

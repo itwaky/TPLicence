@@ -304,10 +304,14 @@ Fraction simplifie(Fraction frac){
     return frac;
 }
 
+
+
 int main(){
-    Fract a = {12,6};
+    Fracttion a = {12,6};
     a = simplifie(a);
 }
+
+
 
 Fraction multiFrac(Fraction frac1, Fraction frac2){
     frac1.denominateur *= frac2.denominateur;
@@ -315,8 +319,6 @@ Fraction multiFrac(Fraction frac1, Fraction frac2){
     frac1 = simplifie(f);
     return frac1;
 }
-
-
 
 
 
