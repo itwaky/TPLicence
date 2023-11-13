@@ -71,23 +71,23 @@ void bullePointDiag(Points tab[], int size){
     }
 }
 
-int main(){
-    Points tp [36] = {{3,1}, {3,5}, {4,1},{5,3},{6,2},{3,2}, {5,2}, {3,4},  {3,3}, {6,1},{4,4}, {2,2}, {6,6},{5,5} ,{3,6} , {2,6} ,{1,2}, {2,3},{6,4},  {5,6} , {4,3},{4,6} , {2,4}, {1,1},{6,5}, {4,5}, {2,1}, {5,4}, {2,5},{5,1},{1,3}, {1,4}, {1,5}, {6,3}, {4,2}, {1,6}  };
-
-    affiche_point_tab(tp, 36);
-
-
-    bullePoint(tp, 36);
-
-    affiche_point_tab(tp,36);
-
-
-    bullePointDiag(tp, 36);
-
-    affiche_point_tab(tp, 36);
-
-
-}
+// int main(){
+//     Points tp [36] = {{3,1}, {3,5}, {4,1},{5,3},{6,2},{3,2}, {5,2}, {3,4},  {3,3}, {6,1},{4,4}, {2,2}, {6,6},{5,5} ,{3,6} , {2,6} ,{1,2}, {2,3},{6,4},  {5,6} , {4,3},{4,6} , {2,4}, {1,1},{6,5}, {4,5}, {2,1}, {5,4}, {2,5},{5,1},{1,3}, {1,4}, {1,5}, {6,3}, {4,2}, {1,6}  };
+// 
+//     affiche_point_tab(tp, 36);
+// 
+// 
+//     bullePoint(tp, 36);
+// 
+//     affiche_point_tab(tp,36);
+// 
+// 
+//     bullePointDiag(tp, 36);
+// 
+//     affiche_point_tab(tp, 36);
+// 
+// 
+// }
 
 
 
@@ -131,6 +131,12 @@ int nombreDeZeros(int matrice[][3], int size){
     return total;
 }
 
+
+// int main(){
+// 
+//     int matrice[3][3] = {{1,2,0},{4,0,6},{0,8,9}};
+//     printf("nb zero : %d", nombreDeZeros(matrice, 3));
+// }
 
 //-----3
 
@@ -223,13 +229,39 @@ void addition(int matrice[][3], int matrice2[][3], int size){
 
 //---------7
 
+#define N 3
+typedef int Matrice[N][N];
 
-void multiplication(int matrice[][3], int matrice2[][3], int size){
-    for(int i = 0; i<size; ++i){
-        for(int j = 0; j<size; ++j){
-            matrice[i][j] = matrice[i][j] * matrice2[i][j];
+void multiplication(Matrice matrice1, Matrice matrice2){
+    Matrice temp = {{0}};// chiant a innitialiser donc marche pas;
+    for(int i = 0; i<N; ++i){
+        for(int j = 0; j<N; ++j){
+            int total = 0;
+            for(int k = 0; k<N; ++k){
+                total += matrice1[i][k] * matrice2[k][j];
+            }
+            temp[i][j] = total;
         }
     }
+    for(int i = 0 ; i<N ; ++i){
+        for(int j = 0; j<N; ++j){
+            matrice1[i][j] = temp[i][j];
+        }
+    }
+}
+
+int main(){
+    int matrice[3][3] = {{1,4,8},
+                         {5,5,8},
+                         {7,8,9}};
+    int matrice2[3][3] = {{1,4,8},
+                          {5,5,8},
+                          {7,8,9}};
+
+
+    multiplication(matrice, matrice2);
+
+    affiche(matrice, 3);
 }
 
 
