@@ -327,7 +327,7 @@ int dichotomie(int t[], int taille, int x){
 
 
 
-//----------------------------exercice18----------------------
+//----------------------------exercice17----------------------
 
 
 typedef struct Polynome

@@ -140,6 +140,8 @@ int nombreDeZeros(int matrice[][3], int size){
 
 //-----3
 
+
+// a refaire 
 int estDiagonale(int matrice[][3], int size){
     for(int i = 0; i<size; ++i){
         for(int j = 0; j<size; ++j){
@@ -250,18 +252,18 @@ void multiplication(Matrice matrice1, Matrice matrice2){
     }
 }
 
-// int main(){
-//     int matrice[3][3] = {{1,4,8},
-//                          {5,5,8},
-//                          {7,8,9}};
-//     int matrice2[3][3] = {{1,4,8},
-//                           {5,5,8},
-//                           {7,8,9}};
-// 
-// 
-//     multiplication(matrice, matrice2);
-// 
-//     affiche(matrice, 3);
-// }
+int main(){
+    int matrice[3][3] = {{1,4,8},
+                         {5,5,8},
+                         {7,8,9}};
+    int matrice2[3][3] = {{1,4,8},
+                          {5,5,8},
+                          {7,8,9}};
+
+
+    multiplication(matrice, matrice2);
+
+    affiche(matrice, 3);
+}
 
 
