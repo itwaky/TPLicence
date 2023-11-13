@@ -291,37 +291,165 @@ int dichotomie(int t[], int taille, int x){
 //---------------------------exercice16--------------------------
 
 
-typedef struct fraction
+// typedef struct fraction
+// {
+//     int denominateur;
+//     int numerateur;
+// 
+// }Fraction;
+// 
+// Fraction simplifie(Fraction frac){
+//     frac.denominateur = frac.denominateur / pgcd(frac.denominateur, frac.numerateur);
+//     frac.numerateur = frac.numerateur / pgcd(frac.denominateur, frac.numerateur);
+//     return frac;
+// }
+// 
+// 
+// 
+// int main(){
+//     Fracttion a = {12,6};
+//     a = simplifie(a);
+// }
+// 
+// 
+// 
+// Fraction multiFrac(Fraction frac1, Fraction frac2){
+//     frac1.denominateur *= frac2.denominateur;
+//     frac1.numerateur *= frac2.numerateur;
+//     frac1 = simplifie(f);
+//     return frac1;
+// }
+
+
+
+
+
+
+
+
+//----------------------------exercice18----------------------
+
+
+typedef struct Polynome
 {
-    int denominateur;
-    int numerateur;
+    float coeff[10];
+    int degre;
+}Polynome;
 
-}Fraction;
 
-Fraction simplifie(Fraction frac){
-    frac.denominateur = frac.denominateur / pgcd(frac.denominateur, frac.numerateur);
-    frac.numerateur = frac.numerateur / pgcd(frac.denominateur, frac.numerateur);
-    return frac;
+Polynome derivePoly(Polynome f){
+    if(f.degre == 0){
+        return f;
+    }
+    for (int i = 0; i<f.degre; i++){
+        f.coeff[i] *= f.degre - i;
+    }
+    f.degre--;
+    return f;
+}
+
+
+void PrintPoly(Polynome f){
+    printf("f(x) = ");
+    for(int i = 0; i<f.degre; ++i){
+        printf("%f x^%d + ",f.coeff[i], f.degre - i);
+        // if(i+1 == f.degre){
+        //     printf("%f", f.coeff[i+1]);
+        // }
+    }
+    printf("%f", f.coeff[f.degre]);
+    printf("\n");
+}
+
+
+Polynome saisiePoly(){
+    Polynome f;
+    printf("degres : ");
+    scanf("%d", &f.degre);
+    char c = 'a';
+    for(int i = 0; i <= f.degre; ++i){
+        printf("%c : ", c++);
+        scanf("%f", &f.coeff[i]);
+    }
+    return f;
+
+}
+
+// int main(){
+//     Polynome p = saisiePoly();
+// 
+//     PrintPoly(p);
+// 
+//     p = derivePoly(p);
+// 
+//     PrintPoly(p);
+// 
+//     return 0;
+// }
+
+
+
+//----------------------anale--CC2--pas sur moodle-----------------
+
+typedef struct
+{
+    int jour;
+    int mois;
+    int annee;
+}Date;
+
+
+typedef struct
+{
+    int nContrat;
+    Date Debut;
+    Date Fin;
+}Contrat;
+
+
+typedef struct
+{
+    char modele[20];
+    int nImma;
+    int kilometrage;
+    int dispo;
+    Contrat contratVoiture;
+}Voiture;
+
+
+Voiture initVoit(const char mod[], int imma, int kilo){
+    Voiture v;
+    strcpy(v.modele, mod);
+    v.nImma = imma;
+    v.kilo = kilo;
+    V.dispo = 1;
+    Date debut = {0,0,0};
+    Date fin = {0,0,0};
+    Contrat c = {0,debut,fin};
+    v.contrat = c;
+    return v; 
 }
 
 
 
-int main(){
-    Fracttion a = {12,6};
-    a = simplifie(a);
+// afficher voiture sans le contrat 
+
+
+// creer fonction dispo qui prend en paramètre un tableau de voiture et qui affiche la liste des voiture dispo
+
+void voitureDispo(const Voiture tab[], int size){
+    for(int i = 0; i<size; ++i){
+        if(tab[i].dispo){
+            printVoiture(tab[i]);// fonction pas créer
+        }
+    }
+    printf("\n");
 }
 
 
+// Creer une fonction nouveau_contrat() qui prend en paramètre une voiture et deux dates et qui etablie un nouveau contrat de location pour celle-ci. Le premier contrat aura pour numéro "1" et les suivants seront incrémenté de 1 à chaque contrat(variable static). L'état de la voiture devient alors "indisponible"
 
-Fraction multiFrac(Fraction frac1, Fraction frac2){
-    frac1.denominateur *= frac2.denominateur;
-    frac1.numerateur *= frac2.numerateur;
-    frac1 = simplifie(f);
-    return frac1;
-}
-
-
-
+Voiture nouveau_contrat(Voiture v) //faut utiliser un pointeur donc changer 
 
 
 
@@ -392,7 +520,7 @@ int estSymetrique(const Matrice matrice){
 void transpose(Matrice matrice){
     for(int i = 0; i<N; ++i){
         for(int j = 0; j<i; ++j){
-            temp = matrice[i][j];
+            int temp = matrice[i][j];
             matrice[i][j] = matrice[j][i];
             matrice[j][i] = temp;
         }
@@ -450,17 +578,17 @@ int sudoku(const int matrice[M][M]){
     return 1;
 }
 
-int main(){
-    Matrice matriceValide = {{2,8,9},
-                             {7,3,5},
-                             {1,6,4}};
-    
-    Matrice matrice = {{1,4,8},
-                       {5,5,8},
-                       {7,8,9}};
-    
-
-    printf("Matrice valide : %d \n", sudoku(matriceValide));
-
-    printf("Matrice invalide : %d \n", sudoku(matrice));
-}
+// int main(){
+//     Matrice matriceValide = {{2,8,9},
+//                              {7,3,5},
+//                              {1,6,4}};
+//     
+//     Matrice matrice = {{1,4,8},
+//                        {5,5,8},
+//                        {7,8,9}};
+//     
+// 
+//     printf("Matrice valide : %d \n", sudoku(matriceValide));
+// 
+//     printf("Matrice invalide : %d \n", sudoku(matrice));
+// }
