@@ -246,7 +246,7 @@ void addition(int matrice[][3], int matrice2[][3], int size){
 typedef int Matrice[N][N];
 
 void multiplication(Matrice matrice1, Matrice matrice2){
-    Matrice temp = {{0}};// chiant a innitialiser donc marche pas;
+    Matrice temp = {{0}};
     for(int i = 0; i<N; ++i){
         for(int j = 0; j<N; ++j){
             int total = 0;
