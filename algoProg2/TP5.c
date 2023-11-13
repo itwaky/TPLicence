@@ -141,16 +141,27 @@ int nombreDeZeros(int matrice[][3], int size){
 //-----3
 
 
-// a refaire 
 int estDiagonale(int matrice[][3], int size){
     for(int i = 0; i<size; ++i){
         for(int j = 0; j<size; ++j){
-            if(!(matrice[i][j] != 0)){
-                return 0;
+            if(i != j){
+                if(matrice[i][j] != 0){
+                    return 0;
+                }
             }
         }
     }
     return 1;
+}
+
+int main(){
+    int matrice[3][3] = {{2,0,0},
+                         {0,0,0},
+                         {0,0,3}};
+
+    printf("%d\n", estDiagonale(matrice, 3));
+
+
 }
 
 
@@ -252,18 +263,18 @@ void multiplication(Matrice matrice1, Matrice matrice2){
     }
 }
 
-int main(){
-    int matrice[3][3] = {{1,4,8},
-                         {5,5,8},
-                         {7,8,9}};
-    int matrice2[3][3] = {{1,4,8},
-                          {5,5,8},
-                          {7,8,9}};
-
-
-    multiplication(matrice, matrice2);
-
-    affiche(matrice, 3);
-}
+// int main(){
+//     int matrice[3][3] = {{1,4,8},
+//                          {5,5,8},
+//                          {7,8,9}};
+//     int matrice2[3][3] = {{1,4,8},
+//                           {5,5,8},
+//                           {7,8,9}};
+// 
+// 
+//     multiplication(matrice, matrice2);
+// 
+//     affiche(matrice, 3);
+// }
 
 
