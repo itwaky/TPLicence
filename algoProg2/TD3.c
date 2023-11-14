@@ -388,71 +388,6 @@ Polynome saisiePoly(){
 // }
 
 
-
-//----------------------anale--CC2--pas sur moodle-----------------
-
-typedef struct
-{
-    int jour;
-    int mois;
-    int annee;
-}Date;
-
-
-typedef struct
-{
-    int nContrat;
-    Date Debut;
-    Date Fin;
-}Contrat;
-
-
-typedef struct
-{
-    char modele[20];
-    int nImma;
-    int kilometrage;
-    int dispo;
-    Contrat contratVoiture;
-}Voiture;
-
-
-Voiture initVoit(const char mod[], int imma, int kilo){
-    Voiture v;
-    strcpy(v.modele, mod);
-    v.nImma = imma;
-    v.kilo = kilo;
-    V.dispo = 1;
-    Date debut = {0,0,0};
-    Date fin = {0,0,0};
-    Contrat c = {0,debut,fin};
-    v.contrat = c;
-    return v; 
-}
-
-
-
-// afficher voiture sans le contrat 
-
-
-// creer fonction dispo qui prend en paramètre un tableau de voiture et qui affiche la liste des voiture dispo
-
-void voitureDispo(const Voiture tab[], int size){
-    for(int i = 0; i<size; ++i){
-        if(tab[i].dispo){
-            printVoiture(tab[i]);// fonction pas créer
-        }
-    }
-    printf("\n");
-}
-
-
-// Creer une fonction nouveau_contrat() qui prend en paramètre une voiture et deux dates et qui etablie un nouveau contrat de location pour celle-ci. Le premier contrat aura pour numéro "1" et les suivants seront incrémenté de 1 à chaque contrat(variable static). L'état de la voiture devient alors "indisponible"
-
-Voiture nouveau_contrat(Voiture v) //faut utiliser un pointeur donc changer 
-
-
-
 //------------------------------------exercice18-------------------------
 
 
@@ -562,6 +497,39 @@ void addition(Matrice matrice1, Matrice matrice2){
 
 #define M 3
 
+int rechercheTab(int tab[], int size, int elem){
+    for(int i = 0; i<size; ++i){
+        if(tab[i] == elem){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void afficheMat3(const int matrice[M][M]){
+    for(int i = 0; i<M; ++i){
+        printf("\n");
+        for(int j = 0; j<M; ++j){
+            printf("%d ", matrice[i][j]);
+        }
+    }
+    printf("\n");
+}
+
+// for(int i = 0 ; i<M ; ++i){
+//     int premierLigne = matrice[i][0];
+//     int premierCol = matrice[0][i];
+//     for(int j = 1 ; j<M ; ++j){
+//         if (premierLigne == matrice[i][j]){
+//             return 0;
+//         }
+//         if (premierCol == matrice[j][i]){
+//             return 0;
+//         }
+//     }
+// }
+
+
 int sudoku(const int matrice[M][M]){
     for(int i = 0 ; i<M ; ++i){
         int premierLigne = matrice[i][0];
@@ -578,17 +546,53 @@ int sudoku(const int matrice[M][M]){
     return 1;
 }
 
-// int main(){
-//     Matrice matriceValide = {{2,8,9},
-//                              {7,3,5},
-//                              {1,6,4}};
-//     
-//     Matrice matrice = {{1,4,8},
-//                        {5,5,8},
-//                        {7,8,9}};
-//     
-// 
-//     printf("Matrice valide : %d \n", sudoku(matriceValide));
-// 
-//     printf("Matrice invalide : %d \n", sudoku(matrice));
-// }
+
+
+#define Z 9
+typedef int Matrice9[Z][Z];
+
+int sudoku9(const int matrice[Z][Z]){
+    int copieMat[3][3] = {{0},{0},{0}};
+    afficheMat3(copieMat);
+    for(int i = 2; i<=Z; i+=3){
+        for(int j = 2; j<=Z; j+=3){
+            printf("i = %d, j = %d \n", i, j);
+            int finK = i + 3;
+            int finL = j + 3; 
+            for (int k = i; k<=finK; k++){
+                for(int l = j; l<=finL; j++){
+                    copieMat[k][l] = matrice[k][l];
+                }
+            }
+            afficheMat3(copieMat);
+            if(sudoku(copieMat)){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
+
+
+
+
+int main(){
+    Matrice9 matriceValide = {{2,8,9,2,8,9,2,8,9},
+                              {7,3,5,7,3,5,7,3,5},
+                              {1,6,4,1,6,4,1,6,4},
+                              {2,8,9,2,8,9,2,8,9},
+                              {7,3,5,7,3,5,7,3,5},
+                              {1,6,4,1,6,4,1,6,4},
+                              {2,8,9,2,8,9,2,8,9},
+                              {7,3,5,7,3,5,7,3,5},
+                              {1,6,4,1,6,4,1,6,4}};
+    
+    Matrice matrice = {{1,4,8},
+                       {5,5,8},
+                       {7,8,9}};
+    
+    // printf("Matrice valide : %d \n", sudoku(matriceValide));
+
+    printf("Matrice invalide : %d \n", sudoku9(matriceValide));
+}
