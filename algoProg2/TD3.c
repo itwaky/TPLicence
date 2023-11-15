@@ -554,18 +554,19 @@ typedef int Matrice9[Z][Z];
 int sudoku9(const int matrice[Z][Z]){
     int copieMat[3][3] = {{0},{0},{0}};
     afficheMat3(copieMat);
-    for(int i = 2; i<=Z; i+=3){
-        for(int j = 2; j<=Z; j+=3){
-            printf("i = %d, j = %d \n", i, j);
+    for(int i = 0; i<Z; i+=3){
+        for(int j = 0; j<Z; j+=3){
             int finK = i + 3;
             int finL = j + 3; 
-            for (int k = i; k<=finK; k++){
-                for(int l = j; l<=finL; j++){
+            for (int k = i; k<finK; k++){
+                for(int l = j; l<finL; l = l + 1){
+                    printf("Valeur de k = %d, Valeur de l = %d \n", k, l);
                     copieMat[k][l] = matrice[k][l];
                 }
             }
+            printf("Matrice copier : \n");
             afficheMat3(copieMat);
-            if(sudoku(copieMat)){
+            if(!sudoku(copieMat)){
                 return 0;
             }
         }
