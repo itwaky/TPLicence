@@ -559,9 +559,10 @@ int sudoku9(const int matrice[Z][Z]){
             int finK = i + 3;
             int finL = j + 3; 
             for (int k = i; k<finK; k++){
-                for(int l = j; l<finL; l = l + 1){
+                for(int l = j; l<finL; ++l){
                     printf("Valeur de k = %d, Valeur de l = %d \n", k, l);
                     copieMat[k][l] = matrice[k][l];
+                    l++;
                 }
             }
             printf("Matrice copier : \n");
