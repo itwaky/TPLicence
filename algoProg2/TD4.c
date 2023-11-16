@@ -30,4 +30,40 @@
 //4
 
 // 1 12 3
-// 169
+// 3
+
+
+
+
+
+//7
+
+
+void incremente(int* p){
+    *p++;
+}
+
+
+//8
+
+void echange(int* p1, int* p2){
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+//9
+
+void carre(int* x){
+    *x = *x * *x;
+}
+
+//10
+
+void disque(float rayon, float* diam, float* peri, flaot* surf){
+    *diam = 2.f * rayon;
+    *perim = 3.14f * *diam;
+    *surf = 3.14f * rayon * rayon;
+}
+
+
