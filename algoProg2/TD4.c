@@ -142,6 +142,7 @@ int* cree_tab_carre(int n){
     for(int i = 0; i <n; i++){
         *(tab+i) = cpt*cpt;
         cpt++;
+        // ou tab[i] = (i+1) * (i+1);
     }
     return tab;
 }
@@ -157,7 +158,7 @@ int* cree_tab_carre(int n){
 //13
 
 
-int* copieTab(int* tab, int n){
+int* copieTab(int* tab, int n){// dans le standard memcpy
     int* tab2 = (int*) malloc(sizeof(int) * n);
     if (tab2 == NULL) exit(-1);
     for(int i = 0; i < n; i++){
@@ -186,16 +187,16 @@ int* concat(int* tab1, int* tab2, int n1, int n2){
 }
 
 
-int main(){
-    int* tab1 = cree_tab_carre(5);
-    int* tab2 = cree_tab_carre(10);
-
-    int* tabConcat = concat(tab1, tab2, 5, 10);
-    afficherTab(tabConcat, 15);
-    free(tab1);
-    free(tab2);
-    free(tabConcat);
-}
+// int main(){
+//     int* tab1 = cree_tab_carre(5);
+//     int* tab2 = cree_tab_carre(10);
+// 
+//     int* tabConcat = concat(tab1, tab2, 5, 10);
+//     afficherTab(tabConcat, 15);
+//     free(tab1);
+//     free(tab2);
+//     free(tabConcat);
+// }
 
 //15
 
