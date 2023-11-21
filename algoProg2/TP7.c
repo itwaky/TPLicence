@@ -61,7 +61,7 @@ void afficher_point (point p){
 // pre-conditions :  le second parametre est la taille du premier
 // post-conditions : 
 
-void afficher_point_tab (int n, point t [n]){
+void afficher_point_tab (int n, point t[n]){
   int i; 
   for (i = 0; i < n; i++) {
     afficher_point(t[i]);
