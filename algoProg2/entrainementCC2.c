@@ -143,53 +143,53 @@ Voiture nouveau_contrat(Voiture v, Date dateDebut, Date dateFin){
 }
 
 
-int main(){
-    // 1.1
-    // char adnVrai[] = "AACTTGGCATGA";
-    // char adnFaux[] = "AACTTGGCAETGA";
-    // printf("Vrai : %d , Faux : %d \n", estADN(adnVrai), estADN(adnFaux));
-
-    // 1.2
-    // char adn1[] = "ATTC";
-    // char adn2[] = "ACTG";
-    // printf("Difference  = %f\n", diffChaine(adn1, adn2));
-
-
-    // 1.3
-    // char adn[] = "AATGC";
-    // printf("Note : %d\n", noteAdn(adn));
-
-    // 2.2
-    char modele[] = "toyota";
-    int nImma = 123456789;
-    int kilometrage = 100000;
-    Voiture v = initVoiture(modele, nImma, kilometrage);
-    // afficheVoiture(v);
-    
-
-    char modele2[] = "audi";
-    int nImma2 = 987654321;
-    int kilometrage2 = 9999;
-    Voiture v2 = initVoiture(modele2, nImma2, kilometrage2);
-    // Voiture tab[] = {v, v2};
-    // dispo(tab, 2);
-
-    afficheVoitureContrat(v);
-
-    Date dateDebut = {12,01,2019};
-    Date dateFin = {20,01,2019};
-    v = nouveau_contrat(v, dateDebut, dateFin);
-
-    afficheVoitureContrat(v);
-
-    Date dateDebut2 = {21,02, 2019};
-    Date dateFin2 = {28, 02, 2019};
-    v = nouveau_contrat(v, dateDebut2, dateFin2);
-
-    afficheVoitureContrat(v);
-
-
-}
+// int main(){
+//     // 1.1
+//     // char adnVrai[] = "AACTTGGCATGA";
+//     // char adnFaux[] = "AACTTGGCAETGA";
+//     // printf("Vrai : %d , Faux : %d \n", estADN(adnVrai), estADN(adnFaux));
+// 
+//     // 1.2
+//     // char adn1[] = "ATTC";
+//     // char adn2[] = "ACTG";
+//     // printf("Difference  = %f\n", diffChaine(adn1, adn2));
+// 
+// 
+//     // 1.3
+//     // char adn[] = "AATGC";
+//     // printf("Note : %d\n", noteAdn(adn));
+// 
+//     // 2.2
+//     char modele[] = "toyota";
+//     int nImma = 123456789;
+//     int kilometrage = 100000;
+//     Voiture v = initVoiture(modele, nImma, kilometrage);
+//     // afficheVoiture(v);
+//     
+// 
+//     char modele2[] = "audi";
+//     int nImma2 = 987654321;
+//     int kilometrage2 = 9999;
+//     Voiture v2 = initVoiture(modele2, nImma2, kilometrage2);
+//     // Voiture tab[] = {v, v2};
+//     // dispo(tab, 2);
+// 
+//     afficheVoitureContrat(v);
+// 
+//     Date dateDebut = {12,01,2019};
+//     Date dateFin = {20,01,2019};
+//     v = nouveau_contrat(v, dateDebut, dateFin);
+// 
+//     afficheVoitureContrat(v);
+// 
+//     Date dateDebut2 = {21,02, 2019};
+//     Date dateFin2 = {28, 02, 2019};
+//     v = nouveau_contrat(v, dateDebut2, dateFin2);
+// 
+//     afficheVoitureContrat(v);
+// 
+// 
+// }
 
 
 
@@ -201,5 +201,36 @@ int main(){
 //-----1.1
 
 
+typedef struct {
+    float x;
+    float y;
+}Point;
 
 
+typedef struct {
+    Point a;
+    Point b;
+    Point c;
+}Triangle;
+
+Triangle creer_triangle(Point* a, Point* b, Point* c){
+    Triangle t;
+    t.a = *a;
+    t.b = *b;
+    t.b = *c;
+    return t;
+}
+
+
+void modfTri(Triangle* t){
+    Point p = {3,4};
+    t -> a = p;
+}
+
+int main(){
+    Point a = {2,3};
+    Point b = {3,4};
+    Point c = {5,6};
+    Triangle t = creer_triangle(&a,&b,&c);
+    modfTri(&t);
+}
