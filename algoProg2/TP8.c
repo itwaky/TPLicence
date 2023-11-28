@@ -53,15 +53,24 @@ void liberer_sapin(char **m,int l){
 
 
 void initialiser_sapin(char** sapin, int h, int l, int hb){
-    int espace = 0;
-    for(int i = hb-1; i==0; i++){
-        for(int j = 0; j<l; j++){
-            if(j < espace){
-                *(*(sapin+i)+j) = ' ';
-            }else{
-                *(*(sapin+i)+j) = '*';
-            }
-            espace++;
+    int espace = l/2 - 1;
+    int etoile = 0;
+    for (int i = 0; i<hb;i++){
+        for(int j = 0; j<espace; j++){
+            sapin[i][j] = ' ';
+        }
+        for(int j = espace; j<l/2 + etoile; j++){
+            sapin[i][j] = '*';
+        }
+        espace--;
+        etoile += 1;
+    }
+    for(int i = hb; i<h; i++){
+        for(int j = 0; j<l/2-1;j++){
+            sapin[i][j] = ' ';
+        }
+        for (int j =l/2-2; j<(l/2-1)+2; j++){
+            sapin[i][j] = '+';
         }
     }
 }
@@ -78,8 +87,22 @@ void afficher_sapin(char** sapin, int h, int l){
 
 
 int main(){
-
-    char** sapin = allouer_sapin(5,5);
-    initialiser_sapin(sapin, 5,5,5);
-    afficher_sapin(sapin, 5, 5);
+    int hb = 10;
+    int h = hb + hb/3;
+    int l = hb * 2;
+    char** sapin = allouer_sapin(h,l);
+    initialiser_sapin(sapin, h,l,hb);
+    afficher_sapin(sapin, h, l);
 }
+
+
+//---------------5
+
+
+//4
+
+
+
+
+
+)
