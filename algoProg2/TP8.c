@@ -87,7 +87,9 @@ void afficher_sapin(char** sapin, int h, int l){
 
 
 int main(){
-    int hb = 10;
+    int hb = 0;
+    printf("entrez la hauteur des branches : ");
+    scanf("%d",&hb);
     int h = hb + hb/3;
     int l = hb * 2;
     char** sapin = allouer_sapin(h,l);
@@ -103,6 +105,3 @@ int main(){
 
 
 
-
-
-)
