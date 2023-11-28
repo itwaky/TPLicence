@@ -84,6 +84,18 @@ void afficher_sapin(char** sapin, int h, int l){
     }
 }
 
+typedef struct{
+    int x;
+    int y;
+}Position;
+
+int positionValide(char** sapin, Position p){
+    if (sapin[p.x][p.y] == '*'){
+        return 1;
+    }
+    return 0;
+}
+
 
 
 int main(){
