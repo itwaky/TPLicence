@@ -42,9 +42,8 @@ concatene l1 l2 = case l1 of {
 
 -- a revoir
 aplatir l = case l of {
-    ((x:xs):xss) -> x : aplatir (xs:xss);
-    ([]:xss) -> aplatir xss;
     [] -> [];
+    t:r -> t ++ aplatir r
 }
 
 
@@ -146,15 +145,36 @@ sous_liste l = case l of {
 -- -------------------------------------exercice4---------------------------------------------
 
 
+place e l = case l of {
+    [] -> [[e]];
+    t:r -> let p = place e r in (e:l):map(\x -> t:x) p
+}
 
 
-
-
--- permut l = case l of {
---     [] -> [];
---     t:r -> let p = permut r in p ++ (map (\l -> ))
--- }
-
+permut l = case l of {
+    [] -> [[]];
+    t:r -> aplatir(map (place t) (permut r))
+}
 
 -- [1,2] -> [[1,2],[2,1]]
 
+
+
+
+-- ----------------------------------exercice5----------------------------
+
+
+-- ---------------------------------exercice6--------------------------
+
+
+-- c
+
+-- void hanoi(int n, int depart, int inter, int arrive ){
+--     if (n == 1){
+--         printf("Deplacer de la tour %d a la tour %d\n", depart,arrive);
+--     }else{
+--         hanoi(n-1, depart, arrive,inter);
+--         printf("Deplacer de la tour %d a la tour %d\n", depart, arrive);
+--         hanoi(n-1,inter,depart,arrive);
+--     }
+-- }

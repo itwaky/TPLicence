@@ -12,7 +12,20 @@ nth l1 n = case l1 of {
     [] -> 0
 }
 
+
 -- 2
+
+
+rev l = case l of {
+    [] -> [];
+    h:t -> rev t ++ [h]
+}
+
+
+
+
+
+-- 3
 
 sans_doublon l = case l of{
     [] -> [];
@@ -21,6 +34,25 @@ sans_doublon l = case l of{
             else
                 sans_doublon r ++ [r]
 }
+
+
+
+-- 4
+
+
+estVide l = case l of {
+    [] -> True;
+    h:t -> False
+}
+
+dernier_elem l = case l of {
+    [] -> -1;
+    h:t ->  if estVide t
+                then h
+            else
+                dernier_elem t
+} 
+
 
 
 
