@@ -1,7 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
 
+
+
+#define rouge     "\x1b[31m"
+#define vert      "\x1b[32m"
+#define jaune     "\x1b[33m"
+#define bleu      "\x1b[34m"
+#define magenta   "\x1b[35m"
+#define cyan      "\x1b[36m"
+#define reset     "\x1b[0m"
 
 //---1
 
@@ -28,6 +38,15 @@
 //-------------Mise en oeuvre-----------
 
 
+int aleatoire(int min, int max){
+    static int rand_init = 0;
+    if(!rand_init){
+        srand(time(NULL));
+        rand_init = 1;
+    }
+    return rand()%(max-min) + min;
+} 
+
 //------------------------1
 
 char** allouer_sapin (int h, int l){
@@ -44,7 +63,7 @@ char** allouer_sapin (int h, int l){
 //-------------------------2
 void liberer_sapin(char** m,int h){
     for(int i = 0; i<h; i++){
-        free(*(m + i));
+        free(m[i]);
     }
     free(m);
 }
@@ -79,10 +98,23 @@ void initialiser_sapin(char** sapin, int h, int l, int hb){
 
 //---------------------4
 
-void afficher_sapin(char** sapin, int h, int l){
+void afficher_sapin(char** sapin, int h, int l, char* tabCouleur[]){
     for(int i = 0; i<h; i++){
         for(int j = 0; j<l; j++){
-            printf("%c", sapin[i][j]);
+            if (sapin[i][j] == 'o'){
+                char* color = tabCouleur[aleatoire(0,3)];
+                printf("%s", color);
+                printf("%c", sapin[i][j]);
+                printf("%s", reset);
+            }else if(sapin[i][j] == '+'){
+                printf("%s", jaune);
+                printf("%c", sapin[i][j]);
+                printf("%s", reset);
+            }else{
+                printf("%s", vert);
+                printf("%c", sapin[i][j]);
+                printf("%s", reset);
+            }
         }
         printf("\n");
     }
@@ -117,16 +149,6 @@ int positionValide(char** sapin, Position_t p){
 
 
 
-//------------------------3
-
-int aleatoire(int min, int max){
-    static int rand_init = 0;
-    if(!rand_init){
-        srand(time(NULL));
-        rand_init = 1;
-    }
-    return rand()%(max-min) + min;
-}
 
 
 void mystere(Position_t* deco, int nb_boules, char** sapin, int h_branches, int largeur){
@@ -171,31 +193,38 @@ void decorer_sapin(char** sapin, Position_t* deco, int sizeDeco){
 
 
 int main(){
+    system("clear");
     int hb = 0;
     printf("entrez la hauteur des branches : ");
     scanf("%d",&hb);
     int h = hb + hb/3;
     int l = hb * 2;
-    char** sapin = allouer_sapin(h,l);
-    initialiser_sapin(sapin, h,l,hb);
     //afficher_sapin(sapin, h, l);
-
 
     int qteBoules = 0;
     printf("Entrez la quantité de boules : ");
     scanf("%d", &qteBoules);
 
+    char* couleur[4] = {rouge,bleu,magenta,cyan};
 
-    Position_t* deco = (Position_t*) malloc(sizeof(Position_t)*qteBoules);
-    mystere(deco, qteBoules, sapin, hb, l);
-    afficheTab(deco, qteBoules);
-
+    char** sapin = allouer_sapin(h,l);
 
 
-    decorer_sapin(sapin, deco, qteBoules);
-    afficher_sapin(sapin,h,l);
 
-    free(deco);
+    while(1){
+        initialiser_sapin(sapin, h,l,hb);
+
+        Position_t* deco = (Position_t*) malloc(sizeof(Position_t)*qteBoules);
+        mystere(deco, qteBoules, sapin, hb, l);
+
+        decorer_sapin(sapin, deco, qteBoules);
+        afficher_sapin(sapin, h, l, couleur);
+
+        sleep(1);
+        system("clear");
+        free(deco);
+
+    }
     liberer_sapin(sapin, h);
 }
 
