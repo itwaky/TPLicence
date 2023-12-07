@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<script>
+    for(let i = 1; i<10; i++){
+        let a = 100 * i;
+        for(let j = 1; j<10;j++){
+            let b = 10 * j;
+            for (let k = 1; k<10;k++){
+                let c = k;
+                let abc = a + b +c;
+                let powAbc = Math.pow(i,3)+Math.pow(j,3)+Math.pow(k,3);
+                if (abc == powAbc){
+                    console.log("Valeur valide : " + abc);
+                }
+            }
+        }
+    }
+
+
+</script>
+
+<style></style>
+
+</head>
+<body>
+
+</body>
+</html>

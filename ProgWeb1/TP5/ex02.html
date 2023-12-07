@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<script>
+
+
+    var valeur = 369;
+
+    var billet = [200,100,50,20,10,5,2,1];
+
+    var renduMonnaie = [
+        { valeur: 200, qte:0},
+        { valeur: 100, qte:0},
+        { valeur: 50, qte:0},
+        { valeur: 20, qte:0},
+        { valeur: 10, qte:0},
+        { valeur: 5, qte:0},
+        { valeur: 2, qte:0},
+        { valeur: 1, qte:0}
+    ];
+
+    billet.forEach(function(item,index){
+        console.log(valeur%billet[index]);
+        let quantite = Math.floor(valeur % billet[index]);
+        renduMonnaie[index].qte = valeur;
+        valeur = valeur - (billet[index] * quantite);
+    })
+
+    console.log(renduMonnaie);
+
+
+
+
+</script>
+
+<style></style>
+
+</head>
+<body>
+
+</body>
+</html>
