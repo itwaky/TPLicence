@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Exercice 3</title>
 <script>
-    let carte = "378863612728621";
+    let carte = "341622377420491";
     var chaineApres = "";
     let indice = 1;
     for (let i = carte.length-1; i>=0; i--){
@@ -24,13 +24,15 @@
     console.log(carte);
     console.log(chaineApres);
     var total = 0;
-    for (let i = 0; i<chaineApres.length; i++){
+    for (let i = 0; i<chaineApres.length - 1; i++){
         total = total + parseInt(chaineApres[i]);
     }
-    if(total % 10 == 0){
-            console.log("Le numéro est valide : "+ total);
+    var test = 10-(total%10);
+    console.log("checkDigit attendue : " + carte[carte.length-1]);
+    if(test == carte[carte.length-1]){
+        console.log("Le numéro est : "+ test + ", donc il est valide");
     }else{
-        console.log("le numero n'est pas valide : "+ total);
+        console.log("le numero est "+ test + ",donc il n'est pas valide");
     }
 </script>
 
