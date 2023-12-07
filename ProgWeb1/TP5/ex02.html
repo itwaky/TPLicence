@@ -11,25 +11,14 @@
 
     var billet = [200,100,50,20,10,5,2,1];
 
-    var renduMonnaie = [
-        { valeur: 200, qte:0},
-        { valeur: 100, qte:0},
-        { valeur: 50, qte:0},
-        { valeur: 20, qte:0},
-        { valeur: 10, qte:0},
-        { valeur: 5, qte:0},
-        { valeur: 2, qte:0},
-        { valeur: 1, qte:0}
-    ];
+    var renduMonnaie = [0,0,0,0,0,0,0,0];
 
     billet.forEach(function(item,index){
-        console.log(valeur%billet[index]);
-        let quantite = Math.floor(valeur % billet[index]);
-        renduMonnaie[index].qte = valeur;
-        valeur = valeur - (billet[index] * quantite);
+        renduMonnaie[index] = Math.floor(valeur/billet[index]);
+        valeur = valeur % billet[index];
+        console.log(renduMonnaie[index] + "x" + billet[index]);
     })
 
-    console.log(renduMonnaie);
 
 
 

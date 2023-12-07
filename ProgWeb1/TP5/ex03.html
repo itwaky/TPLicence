@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<script>
+    let carte = "378863612728621";
+    var chaineApres = "";
+    let indice = 1;
+    for (let i = carte.length-1; i>=0; i--){
+        if(indice % 2 == 0){
+            var temp = parseInt(carte[i],10) * 2;
+            if (temp > 9){
+                temp = String(temp);
+                temp = parseInt(temp[0],10) + parseInt(temp[1],10);
+            }
+        }else{
+            var temp = parseInt(carte[i],10);
+        }
+        chaineApres = String(temp) + chaineApres;
+        indice++;
+    }
+    console.log(carte);
+    console.log(chaineApres);
+    var total = 0;
+    for (let i = 0; i<chaineApres.length; i++){
+        total = total + parseInt(chaineApres[i]);
+    }
+    if(total % 10 == 0){
+            console.log("Le numéro est valide : "+ total);
+    }else{
+        console.log("le numero n'est pas valide : "+ total);
+    }
+</script>
+
+<style></style>
+
+</head>
+<body>
+
+</body>
+</html>
