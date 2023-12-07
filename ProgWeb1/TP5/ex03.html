@@ -12,8 +12,7 @@
         if(indice % 2 == 0){
             var temp = parseInt(carte[i],10) * 2;
             if (temp > 9){
-                temp = String(temp);
-                temp = parseInt(temp[0],10) + parseInt(temp[1],10);
+                temp = temp - 9;
             }
         }else{
             var temp = parseInt(carte[i],10);
@@ -22,7 +21,7 @@
         indice++;
     }
     console.log(carte);
-    console.log(chaineApres);
+    console.log(chaineApres);   
     var total = 0;
     for (let i = 0; i<chaineApres.length - 1; i++){
         total = total + parseInt(chaineApres[i]);
