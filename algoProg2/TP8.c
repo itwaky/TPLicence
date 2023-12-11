@@ -209,6 +209,8 @@ int main(){
 
     char** sapin = allouer_sapin(h,l);
 
+    system("clear");
+
 
 
     while(1){
