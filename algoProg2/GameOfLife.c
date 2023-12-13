@@ -59,6 +59,7 @@ void print_grille(int** grille, int size){
             }else{
                 printf("\033[0;30m   ");
             }
+            printf("\x1b[0m");
         }
         printf("\n");
     }
@@ -106,6 +107,7 @@ void evolution(int** grille, int taille){
             }
         }
     }
+    liberer_grille(tabDensite,taille);
 }
 
 
@@ -137,11 +139,11 @@ int main ()
     init_grille(grille, taille);
 
     while(nbTour >= 0){
-        system("clear");
+        printf("\033[H\033[J");
         print_grille(grille, taille);
         evolution(grille, taille);
         nbTour--;
-        sleep(1);
+        usleep(500000);
     }
 
 
