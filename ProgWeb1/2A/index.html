@@ -4,96 +4,79 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Quiz HTML/CSS</title>
-    <meta name="description" content="Voici mon quiz">
-    <meta name="keywords" content="quiz, html, css">
+    <meta name="description" content="Formulaire conduite">
+    <meta name="keywords" content="conduite, accompagne">
     <meta name="author" content="Mallet--Covic Eros">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
-            margin: 20pt;
-            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            justify-content: center;
+            align-items: center;
         }
-        h1, h2{
-            color: #333;
-        }
-        h1{
+        header{
+            width: 97vw;
             text-align: center;
+            background-color: lightgray;
+            margin-bottom: 20px;
         }
-        form{
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
+        footer{
+            background-color: lightgray;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
-        label{
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-        }
-        input, textarea, select{
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+        input,textarea, select{
+            margin-bottom: 10pt;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
         }
         textarea{
-            height: 100px;
-            resize: vertical;
+            width:300px;
+            height:100px;
         }
         fieldset{
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 20px;
+            width: 400px;
+            border:1px rgb(39, 36, 36);
+            border-radius: 10px;
+            margin:5px 10px;
+            margin-bottom: 30px;
+            line-height: 35px;
+            display: grid;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 20px ;
+
         }
-        select{
-            width: 100%;
-        }
-        input[required]:invalid, textarea[required]:invalid, select[required]:invalid {
-            border: 2px solid #d9534f;
-        }
-        input[required]:valid, textarea[required]:valid, select[required]:valid {
-            border: 2px solid #5bc0de;
-        }
+        input[required]:invalid {border:2px red solid;}
+        input[required]:valid {border:2px green solid;}
         button{
-            background-color: #5cb85c;
-            color: #fff;
+            background-color: lightgray;
+            color: black;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
         }
-        button:hover{
-            background-color: #4cae4c;
-        }
-
-
-        @media screen and (max-width: 600px){
-            form{
-                padding: 10px;
-            }
-            input, textarea, select{
-                margin-bottom: 10px;
-            }
-            button{
-                padding: 8px 16px;
-                font-size: 14px;
+        @media only screen and (max-width: 600px) {
+            fieldset {
+                width: 80%;
             }
         }
     </style>
 </head>    
 <body>
-    <h1>Formulaire de conduite</h1>
+    <header><h1>Formulaire de conduite</h1></header><br>
     <form action="sendData.php" method="post" oninput="result.value=level.value">
-        <h2>Informations sur la session :</h2>
         <fieldset>
+            <h2>Informations sur la session :</h2>
             <label for="date">Date :</label>
             <input type="date" id="date" name="date" required>
 
@@ -105,43 +88,48 @@
 
             <label for="kilometre">Distance (kilomètres) :</label>
             <input type="number" id="kilometre" name="kilometre" required>
+
+
+
+            <h2>Conditions de conduite :</h2>
+        
+            <label for="meteo">Météo :</label>
+            <select id="meteo" name="meteo" multiple>
+                <option value="soleil">Soleil</option>
+                <option value="pluie">Pluie</option>
+                <option value="nuageux">Nuageux</option>
+                <option value="brouillard">Brouillard</option>
+                <option value="neige">Neige</option>
+                <option value="gel">Gel</option>
+            </select>
+    
+            <label for="trafic">Trafic :</label>
+            <select id="trafic" name="trafic">
+                <option value="bouchon">Bouchon</option>
+                <option value="ralenti">Ralenti</option>
+                <option value="fluide">Fluide</option>
+            </select>
+    
+            <label for="route">Environnement :</label>
+            <select id="route" name="route">
+                <option value="autoroute">Autoroute</option>
+                <option value="campagne">Campagne</option>
+                <option value="ville">Ville</option>
+                <option value="mixte">Mixte</option>
+            </select>
+    
+            <label for="xp">Expérience :</label>
+            <select id="xp" name="xp">
+                <option value="bonne">Bonne</option>
+                <option value="moyenne">Moyenne</option>
+                <option value="mauvaise">Mauvaise</option>
+            </select>
+            <br>
+            <button>Envoyer</button>
         </fieldset>
 
-        <h2>Conditions de conduite :</h2>
-        
-        <label for="meteo">Météo :</label>
-        <select id="meteo" name="meteo" multiple>
-            <option value="soleil">Soleil</option>
-            <option value="pluie">Pluie</option>
-            <option value="nuageux">Nuageux</option>
-            <option value="brouillard">Brouillard</option>
-            <option value="neige">Neige</option>
-            <option value="gel">Gel</option>
-        </select>
 
-        <label for="trafic">Trafic :</label>
-        <select id="trafic" name="trafic">
-            <option value="bouchon">Bouchon</option>
-            <option value="ralenti">Ralenti</option>
-            <option value="fluide">Fluide</option>
-        </select>
-
-        <label for="route">Environnement :</label>
-        <select id="route" name="route">
-            <option value="autoroute">Autoroute</option>
-            <option value="campagne">Campagne</option>
-            <option value="ville">Ville</option>
-            <option value="mixte">Mixte</option>
-        </select>
-
-        <label for="xp">Expérience :</label>
-        <select id="xp" name="xp">
-            <option value="bonne">Bonne</option>
-            <option value="moyenne">Moyenne</option>
-            <option value="mauvaise">Mauvaise</option>
-        </select>
-
-        <button>Envoyer</button>
+        <footer><p>Eros Mallet--Covic, Etudiant a l'université de strasbourg</p></footer>
     </form>
 </body>
 </html>
