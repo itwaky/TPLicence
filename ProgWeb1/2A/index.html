@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quiz HTML/CSS</title>
+    <meta name="description" content="Voici mon quiz">
+    <meta name="keywords" content="quiz, html, css">
+    <meta name="author" content="Mallet--Covic Eros">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 20pt;
+            background-color: #f5f5f5;
+        }
+        h1, h2{
+            color: #333;
+        }
+        h1{
+            text-align: center;
+        }
+        form{
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label{
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input, textarea, select{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea{
+            height: 100px;
+            resize: vertical;
+        }
+        fieldset{
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        select{
+            width: 100%;
+        }
+        input[required]:invalid, textarea[required]:invalid, select[required]:invalid {
+            border: 2px solid #d9534f;
+        }
+        input[required]:valid, textarea[required]:valid, select[required]:valid {
+            border: 2px solid #5bc0de;
+        }
+        button{
+            background-color: #5cb85c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover{
+            background-color: #4cae4c;
+        }
+
+
+        @media screen and (max-width: 600px){
+            form{
+                padding: 10px;
+            }
+            input, textarea, select{
+                margin-bottom: 10px;
+            }
+            button{
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>    
+<body>
+    <h1>Formulaire de conduite</h1>
+    <form action="sendData.php" method="post" oninput="result.value=level.value">
+        <h2>Informations sur la session :</h2>
+        <fieldset>
+            <label for="date">Date :</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="heureDepart">Heure de départ :</label>
+            <input type="time" id="heureDepart" name="heureDepart" required>
+
+            <label for="heureArrive">Heure d'arrivée :</label>
+            <input type="time" id="heureArrive" name="heureArrive" required>
+
+            <label for="kilometre">Distance (kilomètres) :</label>
+            <input type="number" id="kilometre" name="kilometre" required>
+        </fieldset>
+
+        <h2>Conditions de conduite :</h2>
+        
+        <label for="meteo">Météo :</label>
+        <select id="meteo" name="meteo" multiple>
+            <option value="soleil">Soleil</option>
+            <option value="pluie">Pluie</option>
+            <option value="nuageux">Nuageux</option>
+            <option value="brouillard">Brouillard</option>
+            <option value="neige">Neige</option>
+            <option value="gel">Gel</option>
+        </select>
+
+        <label for="trafic">Trafic :</label>
+        <select id="trafic" name="trafic">
+            <option value="bouchon">Bouchon</option>
+            <option value="ralenti">Ralenti</option>
+            <option value="fluide">Fluide</option>
+        </select>
+
+        <label for="route">Environnement :</label>
+        <select id="route" name="route">
+            <option value="autoroute">Autoroute</option>
+            <option value="campagne">Campagne</option>
+            <option value="ville">Ville</option>
+            <option value="mixte">Mixte</option>
+        </select>
+
+        <label for="xp">Expérience :</label>
+        <select id="xp" name="xp">
+            <option value="bonne">Bonne</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="mauvaise">Mauvaise</option>
+        </select>
+
+        <button>Envoyer</button>
+    </form>
+</body>
+</html>
