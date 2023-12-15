@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quiz HTML/CSS</title>
+    <title>Formulaire Conduite</title>
     <meta name="description" content="Formulaire conduite">
     <meta name="keywords" content="conduite, accompagne">
     <meta name="author" content="Mallet--Covic Eros">
@@ -14,6 +14,12 @@
               initApplication();
             }
         };
+        let listeConduite = [];
+
+        let dataString=localStorage.getItem('listeConduite');
+        if(dataString!=null) listeConduite=JSON.parse(dataString);
+
+
         var meteo = [{"idMeteo":1,"meteo":"soleil"},{"idMeteo":2,"meteo":"pluie"},{"idMeteo":3,"meteo":"nuageux"},{"idMeteo":4,"meteo":"brouillard"},{"idMeteo":5,"meteo":"neige"},{"idMeteo":6,"meteo":"gel"}];
 
         var trafic = [{"idTrafic" : 1, "trafic" : "bouchon"},{"idTrafic" : 2, "trafic" : "ralenti"},{"idTrafic" : 3, "trafic" : "fluide"}];
@@ -39,41 +45,52 @@
                 let option = `<option value="${item.idTypeRoute}">${item.route}</option>`;
                 document.getElementById("route").insertAdjacentHTML('beforeend', option);
             })
+            kilometreTotal();
         }
-        let listeConduite = [];
 
-        let dataString=localStorage.getItem('movieList');
-        if(dataString!=null) listeConduite=JSON.parse(dataString);
+        function kilometreTotal(){
+            if (listeConduite.length>0){
+                var total = 0;
+                listeConduite.forEach(function(item, index){
+                    total = total + item.kilometre;
+                })
+                let option = `kilometres totaux parcouru : ${total}`;
+                document.getElementById("setConduite").insertAdjacentHTML('beforeend', option);
+            }
+        }
 
         
         function saveConduite(){
             var date = document.getElementById("date").value;
             var heureDepart = document.getElementById("heureDepart").value;
             var heureArrive = document.getElementById("heureArrive").value;
-            var kilometre = document.getElementById("kilometre").value;
+            var kilometre = parseInt(document.getElementById("kilometre").value);
 
+            if (date == "" || heureDepart == "" || heureArrive == "" || kilometre == ""){
+                alert("Veuillez entrer toutes les informations sur la session");
+                return;
+            }
 
-
-            var meteo = document.getElementById("meteo").value;
-            var trafic = document.getElementById("trafic").value;
-            var route = document.getElementById("route").value;
-            var xp = document.getElementById("xp").value;
+            var meteo =parseInt(document.getElementById("meteo").value);
+            var trafic = parseInt(document.getElementById("trafic").value);
+            var route = parseInt(document.getElementById("route").value);
+            var xp = parseInt(document.getElementById("xp").value);
             
-            
+            if (meteo == "0" || trafic == "0" || route == "0" || xp == "0"){
+                alert("Veuillez entrer toutes les conditions de conduite")
+                return;
+            }
             
             let newIdConduite=listeConduite.length+1;
             let newConduite={"idConduite": newIdConduite, "date" : date, "heureDepart" : heureDepart, "heureArrive": heureArrive, "kilometre" : kilometre, "meteo": meteo, "trafic" : trafic, "xp" : xp,"route" : route};
-
-            console.log(newConduite);
             
-            listeConduite.push(listeConduite);
+            listeConduite.push(newConduite);
             console.log(listeConduite);
-            
+
             let listeConduiteString=JSON.stringify(listeConduite);
             localStorage.setItem("listeConduite", listeConduiteString);
-            
+
             document.getElementById("conduite").reset();
-            
         }
 
     </script>
@@ -144,7 +161,7 @@
 <body>
     <header><h1>Formulaire de conduite</h1></header><br>
     <form id="conduite">
-        <fieldset>
+        <fieldset id="setConduite">
             <h2>Informations sur la session :</h2>
             <label for="date">Date :</label>
             <input type="date" id="date" name="date" required>
@@ -164,21 +181,26 @@
         
             <label for="meteo">Météo :</label>
             <select id="meteo" name="meteo">
+                <option value="0">-- choix --</option>
             </select>
     
             <label for="trafic">Trafic :</label>
             <select id="trafic" name="trafic">
+                <option value="0">-- choix --</option>
             </select>
     
             <label for="route">Environnement :</label>
             <select id="route" name="route">
+                <option value="0">-- choix --</option>
             </select>
     
             <label for="xp">Expérience :</label>
             <select id="xp" name="xp">
+                <option value="0">-- choix --</option>
             </select>
             <br>
             <button type="button" onclick="saveConduite()">Envoyer</button>
+
         </fieldset>
     </form>
 
