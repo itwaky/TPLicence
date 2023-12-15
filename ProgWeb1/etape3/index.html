@@ -55,7 +55,8 @@
                     total = total + item.kilometre;
                 })
                 let option = `kilometres totaux parcouru : ${total}`;
-                document.getElementById("setConduite").insertAdjacentHTML('beforeend', option);
+                let elem = document.getElementById("setConduite");
+                elem.innerHTML = option;
             }
         }
 
@@ -84,13 +85,14 @@
             let newIdConduite=listeConduite.length+1;
             let newConduite={"idConduite": newIdConduite, "date" : date, "heureDepart" : heureDepart, "heureArrive": heureArrive, "kilometre" : kilometre, "meteo": meteo, "trafic" : trafic, "xp" : xp,"route" : route};
             
-            listeConduite.push(newConduite);
+            listeConduite.push(newConduite);    
             console.log(listeConduite);
 
             let listeConduiteString=JSON.stringify(listeConduite);
             localStorage.setItem("listeConduite", listeConduiteString);
 
             document.getElementById("conduite").reset();
+            kilometreTotal();
         }
 
     </script>
@@ -103,6 +105,12 @@
             display: grid;
             justify-content: center;
             align-items: center;
+        }
+        input{
+            height: 30px;
+        }
+        select{
+            height: 50px;
         }
         header{
             width: 97vw;
@@ -161,7 +169,7 @@
 <body>
     <header><h1>Formulaire de conduite</h1></header><br>
     <form id="conduite">
-        <fieldset id="setConduite">
+        <fieldset >
             <h2>Informations sur la session :</h2>
             <label for="date">Date :</label>
             <input type="date" id="date" name="date" required>
@@ -198,8 +206,11 @@
             <select id="xp" name="xp">
                 <option value="0">-- choix --</option>
             </select>
+
+            <label id="setConduite"></label>
             <br>
             <button type="button" onclick="saveConduite()">Envoyer</button>
+
 
         </fieldset>
     </form>
