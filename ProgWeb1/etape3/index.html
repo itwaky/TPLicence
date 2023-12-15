@@ -40,6 +40,41 @@
                 document.getElementById("route").insertAdjacentHTML('beforeend', option);
             })
         }
+        let listeConduite = [];
+
+        let dataString=localStorage.getItem('movieList');
+        if(dataString!=null) listeConduite=JSON.parse(dataString);
+
+        
+        function saveConduite(){
+            var date = document.getElementById("date").value;
+            var heureDepart = document.getElementById("heureDepart").value;
+            var heureArrive = document.getElementById("heureArrive").value;
+            var kilometre = document.getElementById("kilometre").value;
+
+
+
+            var meteo = document.getElementById("meteo").value;
+            var trafic = document.getElementById("trafic").value;
+            var route = document.getElementById("route").value;
+            var xp = document.getElementById("xp").value;
+            
+            
+            
+            let newIdConduite=listeConduite.length+1;
+            let newConduite={"idConduite": newIdConduite, "date" : date, "heureDepart" : heureDepart, "heureArrive": heureArrive, "kilometre" : kilometre, "meteo": meteo, "trafic" : trafic, "xp" : xp,"route" : route};
+
+            console.log(newConduite);
+            
+            listeConduite.push(listeConduite);
+            console.log(listeConduite);
+            
+            let listeConduiteString=JSON.stringify(listeConduite);
+            localStorage.setItem("listeConduite", listeConduiteString);
+            
+            document.getElementById("conduite").reset();
+            
+        }
 
     </script>
     <style>
@@ -128,7 +163,7 @@
             <h2>Conditions de conduite :</h2>
         
             <label for="meteo">Météo :</label>
-            <select id="meteo" name="meteo" multiple>
+            <select id="meteo" name="meteo">
             </select>
     
             <label for="trafic">Trafic :</label>
@@ -143,7 +178,7 @@
             <select id="xp" name="xp">
             </select>
             <br>
-            <button>Envoyer</button>
+            <button type="button" onclick="saveConduite()">Envoyer</button>
         </fieldset>
     </form>
 
