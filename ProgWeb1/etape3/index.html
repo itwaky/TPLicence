@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quiz HTML/CSS</title>
+    <meta name="description" content="Formulaire conduite">
+    <meta name="keywords" content="conduite, accompagne">
+    <meta name="author" content="Mallet--Covic Eros">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState == "complete") {
+              initApplication();
+            }
+        };
+        var meteo = [{"idMeteo":1,"meteo":"soleil"},{"idMeteo":2,"meteo":"pluie"},{"idMeteo":3,"meteo":"nuageux"},{"idMeteo":4,"meteo":"brouillard"},{"idMeteo":5,"meteo":"neige"},{"idMeteo":6,"meteo":"gel"}];
+
+        var trafic = [{"idTrafic" : 1, "trafic" : "bouchon"},{"idTrafic" : 2, "trafic" : "ralenti"},{"idTrafic" : 3, "trafic" : "fluide"}];
+
+        var xp = [{"idExp" : 1, "experience" : "bonne"},{"idExp" : 2, "experience" : "moyenne"},{"idExp" : 3, "experience" : "mauvaise"}];
+
+        var route = [{"idTypeRoute" : 1, "route" : "autoroute"},{"idTypeRoute" : 2, "route" : "campagne"},{"idTypeRoute" : 3, "route" : "ville"},{"idTypeRoute" : 4, "route" : "mixte"}];
+
+        function initApplication(){
+            meteo.forEach(function(item, index){
+                let option = `<option value="${item.idMeteo}">${item.meteo}</option>`;
+                document.getElementById("meteo").insertAdjacentHTML('beforeend', option);
+            })
+            trafic.forEach(function(item, index){
+                let option = `<option value="${item.idTrafic}">${item.trafic}</option>`;
+                document.getElementById("trafic").insertAdjacentHTML('beforeend', option);
+            })
+            xp.forEach(function(item, index){
+                let option = `<option value="${item.idExp}">${item.experience}</option>`;
+                document.getElementById("xp").insertAdjacentHTML('beforeend', option);
+            })
+            route.forEach(function(item, index){
+                let option = `<option value="${item.idTypeRoute}">${item.route}</option>`;
+                document.getElementById("route").insertAdjacentHTML('beforeend', option);
+            })
+        }
+
+    </script>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+        header{
+            width: 97vw;
+            text-align: center;
+            background-color: lightgray;
+            margin-bottom: 20px;
+        }
+        footer{
+            background-color: lightgray;
+            padding: 20px;
+            text-align: left;
+        }
+        input,textarea, select{
+            margin-bottom: 10pt;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea{
+            width:300px;
+            height:100px;
+        }
+        fieldset{
+            width: 400px;
+            border:1px rgb(39, 36, 36);
+            border-radius: 10px;
+            margin:5px 10px;
+            margin-bottom: 30px;
+            line-height: 35px;
+            display: grid;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 20px ;
+
+        }
+        input[required]:invalid {border:2px red solid;}
+        input[required]:valid {border:2px green solid;}
+        button{
+            background-color: lightgray;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        @media only screen and (max-width: 600px) {
+            fieldset {
+                width: 80%;
+            }
+        }
+    </style>
+</head>    
+<body>
+    <header><h1>Formulaire de conduite</h1></header><br>
+    <form id="conduite">
+        <fieldset>
+            <h2>Informations sur la session :</h2>
+            <label for="date">Date :</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="heureDepart">Heure de départ :</label>
+            <input type="time" id="heureDepart" name="heureDepart" required>
+
+            <label for="heureArrive">Heure d'arrivée :</label>
+            <input type="time" id="heureArrive" name="heureArrive" required>
+
+            <label for="kilometre">Distance (kilomètres) :</label>
+            <input type="number" id="kilometre" name="kilometre" required>
+
+
+
+            <h2>Conditions de conduite :</h2>
+        
+            <label for="meteo">Météo :</label>
+            <select id="meteo" name="meteo" multiple>
+            </select>
+    
+            <label for="trafic">Trafic :</label>
+            <select id="trafic" name="trafic">
+            </select>
+    
+            <label for="route">Environnement :</label>
+            <select id="route" name="route">
+            </select>
+    
+            <label for="xp">Expérience :</label>
+            <select id="xp" name="xp">
+            </select>
+            <br>
+            <button>Envoyer</button>
+        </fieldset>
+    </form>
+
+    <footer><p>Eros Mallet--Covic, Etudiant a l'université de strasbourg</p></footer>
+</body>
+</html>

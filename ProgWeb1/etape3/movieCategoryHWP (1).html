@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<script>
+
+let categoryList=[{"idCategory":"1","category":"Comédie","validCategory":"1"},{"idCategory":"2","category":"Fantastique","validCategory":"1"},{"idCategory":"3","category":"Thriller","validCategory":"1"},{"idCategory":"4","category":"Drame","validCategory":"1"},{"idCategory":"5","category":"Historique","validCategory":"1"}];
+
+let movieList=[];
+
+let dataString=localStorage.getItem('movieList');
+if(dataString!=null) movieList=JSON.parse(dataString);
+
+function saveMovie(){
+var theTitleMovie=document.getElementById("titleMovie").value;
+var theIdCategory=document.getElementById("idCategory").value;
+console.log(`title : ${theTitleMovie} , idCategory ${theIdCategory}`);
+
+
+
+let newIdMovie=movieList.length+1;
+let newMovie={"idMovie":newIdMovie,"titleMovie":theTitleMovie,"idCategory":theIdCategory};
+console.log(newMovie);
+
+movieList.push(newMovie);
+console.log(movieList);
+
+let movieListString=JSON.stringify(movieList);
+localStorage.setItem("movieList",movieListString);
+
+document.getElementById("movieWebform").reset();
+
+}//end fct
+
+
+
+</script>
+</head>
+<body>
+<nav><a href="seeMovieCategoryHWP.html">[ See the movie list ]</a></nav>
+<header>
+<h1>Insert a new movie</h1>
+</header>
+<section>
+<form id="movieWebform">
+Movie Title <input type="text" id="titleMovie"><br>
+Category <select id="idCategory" required>
+<option value="">-- Choose --</option>
+</select><br>
+<script>
+categoryList.forEach(function(item,index){
+let option=`<option value="${item.idCategory}">${item.category}</option>`;
+document.getElementById("idCategory").insertAdjacentHTML('beforeend',option);
+});
+
+</script>	
+<button type="button" onclick="saveMovie()">Save</button>
+</form>
+</section>
+</body>
+</html>
