@@ -1,4 +1,8 @@
 
+
+-- -----------------------Jeux de cartes--------------------
+
+
 -- ----------------------1
 
 
@@ -106,3 +110,114 @@ insere_paquet paquet c = case paquet of{
 -- insere_paquet (Dessus(As Trefle)(Dessus (As Pique)(Dessus (As Carreau)(Derniere (As Coeur))))) (Roi Carreau)
 
 
+
+
+-- -----------------------------Arbres binaire----------------
+
+-----1
+
+data Tree a = Vide 
+            | Noeud (Tree a) a (Tree a)
+            deriving(Eq,Ord,Show)
+
+
+
+--------2
+
+-- Noeud (Noeud Vide 3 (Noeud Vide 2 Vide)) 1 (Noeud Vide 4 Vide)
+
+
+
+
+
+---------3
+
+nb_feuilles arbre = case arbre of{
+    Noeud Vide _ Vide -> 1;
+    Noeud g _ d -> (nb_feuilles g) + (nb_feuilles d);
+    _ -> 0
+}
+
+
+--------4
+
+
+nb_noeuds arbre = case arbre of{
+    Noeud g _ d -> (nb_noeuds g) + 1 + (nb_noeuds d);
+    _ -> 0;
+}
+
+
+-------5
+
+hauteur arbre = case arbre of{
+    Noeud g _ d ->  let gauche = (hauteur g) + 1 in let droite = (hauteur d) + 1 in 
+                        if gauche > droite
+                            then gauche
+                        else
+                            droite;
+    _ -> 0 
+}
+
+
+------6
+
+max_tree arbre = case arbre of{
+    Noeud g val d -> max (max val (max_tree g)) (max val (max_tree d));
+    _ -> 0;
+}
+
+
+------7
+
+
+
+miroir arbre = case arbre of{ -- comprends pas pourquoi ça ne fonctionne pas 
+    Noeud g val d -> Noeud (miroir d) val (miroir g);
+    Vide -> Vide
+}
+
+
+
+
+
+
+--------------------------------Arbres binaire de recherche-------------------------
+
+
+
+------------1
+
+
+-- (Noeud (Noeud (Noeud Vide 1 Vide) 3 (Noeud (Noeud Vide 4 Vide) 6 (Noeud Vide 7 Vide))) 8 (Noeud Vide 10 (Noeud (Noeud Vide 13 Vide) 14 Vide)))
+
+
+-----------2
+
+
+
+mem arbre x = case arbre of{
+    Noeud g val d ->    if val == x
+                            then True
+                        else if x < val
+                            then mem g x
+                        else
+                            mem d x;
+    _ -> False
+}
+
+
+-----------3
+
+
+add arbre x = case arbre of{
+    Noeud g val d ->    if x > val
+                            then Noeud g val (add d x)
+                        else
+                            Noeud (add g x) val d;
+    Vide -> Noeud Vide x Vide
+}
+
+
+
+----------4
