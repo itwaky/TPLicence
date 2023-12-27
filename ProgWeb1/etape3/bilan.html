@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Formulaire Conduite</title>
+    <meta name="description" content="Formulaire conduite">
+    <meta name="keywords" content="conduite, accompagne">
+    <meta name="author" content="Mallet--Covic Eros">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState == "complete") {
+              initApplication();
+            }
+        };
+
+        let listeConduite = [];
+
+        let dataString = localStorage.getItem('listeConduite');
+        if(dataString!=null) listeConduite = JSON.parse(dataString);
+
+
+
+
+        function initApplication(){
+            listeConduite.forEach(function(item, index){
+                let row = `<tr><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${item.meteo}</td><td>${item.route}</td><td>${item.trafic}</td><td>${item.xp}</td></tr>`;
+                document.getElementById("list").insertAdjacentHTML('beforeend', row);
+            })
+        }
+
+    </script>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            min-height: 100vh;
+        }
+        input{
+            height: 30px;
+        }
+        select{
+            height: 50px;
+        }
+        header{
+            text-align: center;
+            background-color: #3498db;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            color: white;
+        }
+
+        header button{
+            width: 150px;
+            height: 40px;
+            background-color: #0380d3;
+            border:1px rgb(39, 36, 36);
+            border-radius: 4px;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+        header button:hover{
+            background-color: aqua;
+        }
+        footer{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #3498db;
+            color: white;
+        }
+        .foot{
+            display: flex;
+            justify-content: space-between;
+        }
+        input,textarea, select{
+            margin-bottom: 10pt;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100vh;
+            border-collapse: collapse;
+            margin-bottom: 20px; /* Ajout d'une marge en bas pour l'esthétique */
+        }
+        
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        th {
+            background-color: #f2f2f2; /* Ajout d'une couleur de fond pour les en-têtes */
+        }
+        
+
+        @media screen and (max-width: 600px) {
+            header{
+                flex-direction: column;
+                gap: 10;
+            }
+            header button{
+                width: 90%;
+            }
+        }
+    </style>
+</head>    
+<body>
+    <header>
+        <h1>AccompagnAuto</h1>
+        <a href="index.html">
+            <button>Formulaire</button>
+        </a>
+        <a href="bilan.html">
+            <button>bilan</button>
+        </a>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro de séance</th>
+                <th>Date</th>
+                <th>Heure de départ</th>
+                <th>Heure d'arrivée</th>
+                <th>Kilometre parcouru</th>
+                <th>Meteo</th>
+                <th>Type de route</th>
+                <th>Traffique</th>
+                <th>Resenti</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+    </table>
+    <footer>
+        <div class="foot">
+            <div class="foot1"><p>Eros Mallet--Covic</p></div>
+            <div class="foot2"><p>Etudiant a l'université de strasbourg</p></div>
+        </div>
+    </footer>
+</body>
+</html>
