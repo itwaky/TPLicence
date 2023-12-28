@@ -22,6 +22,31 @@
 
 
 
+
+        function initApplication(){
+            let listAffichage = listeConduite;
+            listAffichage = conduiteSortDate(listAffichage);
+            listAffichage.forEach(function(item, index){
+                let row = `<tr><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${item.meteo}</td><td>${item.route}</td><td>${item.trafic}</td><td>${item.xp}</td></tr>`;
+                document.getElementById("list").insertAdjacentHTML('beforeend', row);
+            })
+        };
+
+        function conduiteSortDate(list){
+            for(let i = 0; i<list.length - 1;i++){
+                let max = i;
+                for(let j = i+1; j<list.length; j++){
+                    if(list[max].date < list[j].date){
+                        max = j;
+                    }
+                }
+                let temp = list[max];
+                list[max] = list[i];
+                list[i] = temp;
+            }
+            return list;
+        };
+
     </script>
     <style>
         body{
@@ -126,6 +151,24 @@
             <button>Liste des séances</button>
         </a>
     </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro de séance</th>
+                <th>Date</th>
+                <th>Heure de départ</th>
+                <th>Heure d'arrivée</th>
+                <th>Kilometre parcouru</th>
+                <th>Meteo</th>
+                <th>Type de route</th>
+                <th>Traffique</th>
+                <th>Resenti</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+    </table>
     <footer>
         <div class="foot">
             <div class="foot1"><p>Eros Mallet--Covic</p></div>
