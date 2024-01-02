@@ -26,9 +26,16 @@
         function initApplication(){
             let listAffichage = listeConduite;
             listAffichage = conduiteSortDate(listAffichage);
+            let cpt = 1;
             listAffichage.forEach(function(item, index){
-                let row = `<tr><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${item.meteo}</td><td>${item.route}</td><td>${item.trafic}</td><td>${item.xp}</td></tr>`;
-                document.getElementById("list").insertAdjacentHTML('beforeend', row);
+                if(cpt % 2 == 0){
+                    let row = `<tr class="grayLigne"><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${item.meteo}</td><td>${item.route}</td><td>${item.trafic}</td><td>${item.xp}</td></tr>`;
+                    document.getElementById("list").insertAdjacentHTML('beforeend', row);
+                }else{
+                    let row = `<tr><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${item.meteo}</td><td>${item.route}</td><td>${item.trafic}</td><td>${item.xp}</td></tr>`;
+                    document.getElementById("list").insertAdjacentHTML('beforeend', row);
+                }
+                cpt++;
             })
         };
 
@@ -114,7 +121,7 @@
         table {
             width: 100vh;
             border-collapse: collapse;
-            margin-bottom: 20px; /* Ajout d'une marge en bas pour l'esthétique */
+            margin-bottom: 20px;
         }
         
         th, td {
@@ -123,7 +130,10 @@
         }
         
         th {
-            background-color: #f2f2f2; /* Ajout d'une couleur de fond pour les en-têtes */
+            background-color: #f2f2f2;
+        }
+        .grayLigne{
+            background-color: #f2f2f2;
         }
         
 
