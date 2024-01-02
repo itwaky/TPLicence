@@ -1,4 +1,4 @@
-const sheetName = 'BaseData'
+const sheetName = 'Données de départ';
 
 
 function createNobelStat() {
@@ -19,7 +19,7 @@ function createNobelStat() {
     let numColumns = categories[0].length;
 
     let range = sheet.getRange(startRow, startColumn, numRows, numColumns);
-
+    
     range.setValues(categories);
 
 
@@ -38,18 +38,48 @@ function createNobelStat() {
 
     range.setValues(tabChem);
 
+    range = sheet.getRange('B2:G2');
 
+    let tabSingle = range.getValues();
+
+    range = sheet.getRange('B3:G3');
+
+    let tabDouble = range.getValues();
+
+    range = sheet.getRange('B4:G4');
+
+    let tabTriple = range.getValues();
+
+
+    let sumSingle = AddTab(tabSingle);
+    let sumDouble = AddTab(tabDouble);
+    let sumTriple = AddTab(tabTriple);
+
+    let sumAll = sumSingle + sumDouble + sumTriple;
+
+    range = sheet.getRange('H1:H5');
+
+    let collumnH = [['Total'],[sumSingle],[sumDouble],[sumTriple],[sumAll]];
+
+    range.setValues(collumnH);
+
+
+
+}
+
+function AddTab(tab){
+
+
+  let sum = 0;
+  tab[0].forEach(function(item){
+    sum = sum + item;
+  })
+
+  return sum;
 }
 
 
 function getCatOcc(cat, nbOcc){
-  // test values
-
-  // cat = 'peace';
-  // nbOcc = 2;
-
-  // end test values
-
 
   let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
   let lastRow = sheet.getLastRow();
@@ -123,4 +153,3 @@ function getCategories(){
 
     return finalTab;
 }
-
