@@ -31,6 +31,15 @@
 
 
         function initApplication(){
+            document.getElementById('form').onclick = function() {
+                window.location.href = 'index.html';
+            };
+            document.getElementById('bilan').onclick = function() {
+                window.location.href = 'bilan.html';
+            };
+            document.getElementById('seance').onclick = function() {
+                window.location.href = 'seance.html';
+            };
             let listAffichage = listeConduite;
             listAffichage = conduiteSortDate(listAffichage);
             let cpt = 1;
@@ -209,15 +218,9 @@
 <body>
     <header>
         <h1>AccompagnAuto</h1>
-        <a href="index.html">
-            <button>Formulaire</button>
-        </a>
-        <a href="bilan.html">
-            <button>Bilan</button>
-        </a>
-        <a href="seance.html">
-            <button class="lastButton">Séances</button>
-        </a>
+        <button id="form">Formulaire</button>
+        <button id="bilan">Bilan</button>
+        <button id="seance" class="lastButton">Séances</button>
     </header>
     <button onclick="reset()" class="resetButton">Réinitialiser l'application</button>
     <table>

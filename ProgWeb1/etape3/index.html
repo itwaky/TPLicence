@@ -29,6 +29,17 @@
         var route = [{"idTypeRoute" : 1, "route" : "autoroute"},{"idTypeRoute" : 2, "route" : "campagne"},{"idTypeRoute" : 3, "route" : "ville"},{"idTypeRoute" : 4, "route" : "mixte"}];
 
         function initApplication(){
+            document.getElementById('form').onclick = function() {
+                window.location.href = 'index.html';
+            };
+            document.getElementById('bilan').onclick = function() {
+                window.location.href = 'bilan.html';
+            };
+            document.getElementById('seance').onclick = function() {
+                window.location.href = 'seance.html';
+            };
+
+
             meteo.forEach(function(item, index){
                 let option = `<option value="${item.idMeteo}">${item.meteo}</option>`;
                 document.getElementById("meteo").insertAdjacentHTML('beforeend', option);
@@ -205,15 +216,9 @@
 <body>
     <header>
         <h1>AccompagnAuto</h1>
-        <a href="index.html">
-            <button>Formulaire</button>
-        </a>
-        <a href="bilan.html">
-            <button>Bilan</button>
-        </a>
-        <a href="seance.html">
-            <button class="lastButton">Séances</button>
-        </a>
+        <button id="form">Formulaire</button>
+        <button id="bilan">Bilan</button>
+        <button id="seance" class="lastButton">Séances</button>
     </header>
     <form id="conduite">
         <fieldset >
