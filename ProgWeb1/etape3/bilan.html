@@ -8,6 +8,8 @@
     <meta name="keywords" content="conduite, accompagne">
     <meta name="author" content="Mallet--Covic Eros">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.onreadystatechange = function () {
             if (document.readyState == "complete") {
@@ -20,6 +22,122 @@
         let dataString = localStorage.getItem('listeConduite');
         if(dataString!=null) listeConduite = JSON.parse(dataString);
 
+
+
+        function initApplication(){
+            let totalKilo = 0;
+            listeConduite.forEach(function(item){
+                totalKilo += item.kilometre;
+            });
+
+            kiloRestant = 3000 - totalKilo;
+            if(kiloRestant <= 0){
+                var text = `Vous avez fait ${listeConduite.length} séances, vous avez parcouru ${totalKilo}km au total. Bravo ! Vous avez suffisament fait de kilomètres pour valider votre conduite accompagnée !`;
+            }else{
+                var text = `Vous avez fait ${listeConduite.length} séances, vous avez parcouru ${totalKilo}km au total, il vous reste ${kiloRestant}km a parcourir.`;
+            }
+            let elem = document.getElementById("informations");
+
+            elem.innerHTML = text;
+
+            if(listeConduite.length == 0){
+                text = `Vous devez avoir fait au moins une séance pour pouvoir visualiser les graphiques !`;
+                elem = document.getElementById("stats");
+                elem.style.color = "red";
+                elem.innerHTML = text;
+            }else{
+                text = `Voici différents graphiques pour visualiser vos conduites :`;
+                elem = document.getElementById("stats");
+                elem.innerHTML = text;
+
+                createChartKilo();
+                createChartMeteo();
+            }
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+        function createChartKilo(){
+            let tabSeance = [];
+            let tabKilo = [];
+            let moyenne = 0;
+
+            listeConduite.forEach(function(item, index){
+                tabSeance.push("Séance " + item.idConduite.toString());
+                tabKilo.push(item.kilometre);
+                moyenne += item.kilometre;
+            });
+            tabSeance.push("Moyenne");
+            moyenne = moyenne / listeConduite.length;
+            tabKilo.push(moyenne)
+
+            const chart = document.getElementById('kiloMoyen');
+            new Chart(chart, {
+              type: 'bar',
+              data: {
+                labels: tabSeance,
+                datasets: [{
+                  label: 'kilometres parcourus',
+                  data: tabKilo,
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+        }
+
+
+
+        function createChartMeteo(){
+            let meteo = [{"idMeteo":1,"meteo":"soleil"},{"idMeteo":2,"meteo":"pluie"},{"idMeteo":3,"meteo":"nuageux"},{"idMeteo":4,"meteo":"brouillard"},{"idMeteo":5,"meteo":"neige"},{"idMeteo":6,"meteo":"gel"}];
+            
+
+            let tabLabel = [];
+
+            meteo.forEach(function(item){
+                tabLabel.push(item.meteo);
+            });
+
+            let tabData = [0,0,0,0,0,0];
+
+            listeConduite.forEach(function(item){
+                tabData[item.meteo - 1] += 1;
+            });
+
+            console.log(tabLabel);
+            console.log(tabData);
+
+
+
+            const chart2 = document.getElementById('chartMeteo');
+            new Chart(chart2, {
+              type: 'pie',
+              data: {
+                labels: tabLabel,
+                datasets: [{
+                  data: tabData,
+                }]
+              },
+            });
+
+
+
+        }
 
 
     </script>
@@ -75,10 +193,7 @@
             height: 60px;
             background-color: #3498db;
             color: white;
-        }
-        .foot{
-            display: flex;
-            justify-content: space-between;
+            text-align: center;
         }
         input,textarea, select{
             margin-bottom: 10pt;
@@ -89,7 +204,7 @@
         table {
             width: 100vh;
             border-collapse: collapse;
-            margin-bottom: 20px; /* Ajout d'une marge en bas pour l'esthétique */
+            margin-bottom: 20px;
         }
         
         th, td {
@@ -98,17 +213,35 @@
         }
         
         th {
-            background-color: #f2f2f2; /* Ajout d'une couleur de fond pour les en-têtes */
+            background-color: #f2f2f2;
         }
-        
+        .chart {
+            width: 60%;
+            margin: 0 auto;
+            margin-bottom: 80px;
+        }
+        .info{
+            text-align: center;
+            font-size: 24px;
+        }
 
-        @media screen and (max-width: 600px) {
+        .info{
+            margin-top: 100px;
+            margin-bottom: 20px;
+        }
+        @media screen and (max-width: 750px) {
             header{
                 flex-direction: column;
                 gap: 10;
             }
-            header button{
-                width: 90%;
+            .lastButton{
+                margin-bottom: 20px;
+            }
+            footer p{
+                font-size: 14px;
+            }
+            .info{
+                margin-top: 260px;
             }
         }
     </style>
@@ -120,17 +253,28 @@
             <button>Formulaire</button>
         </a>
         <a href="bilan.html">
-            <button>bilan</button>
+            <button>Bilan</button>
         </a>
         <a href="seance.html">
-            <button>Liste des séances</button>
+            <button class="lastButton">Séances</button>
         </a>
     </header>
+
+    <div class="info">
+        <p id="informations"></p>
+        <p id="stats"></p>
+    </div>
+
+    <div class="chart">
+        <canvas id="kiloMoyen"></canvas>
+    </div>
+    <div class="chart">
+        <canvas id="chartMeteo"></canvas>
+    </div>
+
+
     <footer>
-        <div class="foot">
-            <div class="foot1"><p>Eros Mallet--Covic</p></div>
-            <div class="foot2"><p>Etudiant a l'université de strasbourg</p></div>
-        </div>
+        <p>Eros Mallet--Covic, Etudiant à l'université de Strasbourg</p>
     </footer>
 </body>
 </html>

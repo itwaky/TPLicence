@@ -58,6 +58,11 @@
                 let elem = document.getElementById("setConduite");
                 elem.innerHTML = option;
             }
+
+
+            if(total >= 3000){
+                alert("Bravo ! Vous avez atteint les 3000km vous pouvez voir les statistiques de vos séances dans la page Bilan");
+            }
         }
 
         
@@ -148,10 +153,7 @@
             height: 60px;
             background-color: #3498db;
             color: white;
-        }
-        .foot{
-            display: flex;
-            justify-content: space-between;
+            text-align: center;
         }
         input,textarea, select{
             margin-bottom: 10pt;
@@ -183,16 +185,19 @@
             cursor: pointer;
             font-size: 16px;
         }
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 750px) {
             header{
                 flex-direction: column;
                 gap: 10;
             }
             fieldset{
-                margin-top: 220px;
+                margin-top: 280px;
             }
-            header button{
-                width: 90%;
+            .lastButton{
+                margin-bottom: 20px;
+            }
+            footer p{
+                font-size: 14px;
             }
         }
     </style>
@@ -204,10 +209,10 @@
             <button>Formulaire</button>
         </a>
         <a href="bilan.html">
-            <button>bilan</button>
+            <button>Bilan</button>
         </a>
         <a href="seance.html">
-            <button>Liste des séances</button>
+            <button class="lastButton">Séances</button>
         </a>
     </header>
     <form id="conduite">
@@ -258,10 +263,7 @@
     </form>
 
     <footer>
-        <div class="foot">
-            <div class="foot1"><p>Eros Mallet--Covic</p></div>
-            <div class="foot2"><p>Etudiant a l'université de strasbourg</p></div>
-        </div>
+        <p>Eros Mallet--Covic, Etudiant à l'université de Strasbourg</p>
     </footer>
 </body>
 </html>

@@ -20,6 +20,13 @@
         let dataString = localStorage.getItem('listeConduite');
         if(dataString!=null) listeConduite = JSON.parse(dataString);
 
+        var meteo = [{"idMeteo":1,"meteo":"soleil"},{"idMeteo":2,"meteo":"pluie"},{"idMeteo":3,"meteo":"nuageux"},{"idMeteo":4,"meteo":"brouillard"},{"idMeteo":5,"meteo":"neige"},{"idMeteo":6,"meteo":"gel"}];
+
+        var trafic = [{"idTrafic" : 1, "trafic" : "bouchon"},{"idTrafic" : 2, "trafic" : "ralenti"},{"idTrafic" : 3, "trafic" : "fluide"}];
+            
+        var xp = [{"idExp" : 1, "experience" : "bonne"},{"idExp" : 2, "experience" : "moyenne"},{"idExp" : 3, "experience" : "mauvaise"}];
+            
+        var route = [{"idTypeRoute" : 1, "route" : "autoroute"},{"idTypeRoute" : 2, "route" : "campagne"},{"idTypeRoute" : 3, "route" : "ville"},{"idTypeRoute" : 4, "route" : "mixte"}];
 
 
 
@@ -29,10 +36,10 @@
             let cpt = 1;
             listAffichage.forEach(function(item, index){
                 if(cpt % 2 == 0){
-                    let row = `<tr class="grayLigne"><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${item.meteo}</td><td>${item.route}</td><td>${item.trafic}</td><td>${item.xp}</td></tr>`;
+                    let row = `<tr class="grayLigne"><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${meteo[item.meteo - 1].meteo}</td><td>${route[item.route - 1].route}</td><td>${trafic[item.route - 1].trafic}</td><td>${xp[item.xp - 1].experience}</td></tr>`;
                     document.getElementById("list").insertAdjacentHTML('beforeend', row);
                 }else{
-                    let row = `<tr><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${item.meteo}</td><td>${item.route}</td><td>${item.trafic}</td><td>${item.xp}</td></tr>`;
+                    let row = `<tr><td>${item.idConduite}</td><td>${item.date}</td><td>${item.heureDepart}</td><td>${item.heureArrive}</td><td>${item.kilometre}</td><td>${meteo[item.meteo - 1].meteo}</td><td>${route[item.route - 1].route}</td><td>${trafic[item.route - 1].trafic}</td><td>${xp[item.xp - 1].experience}</td></tr>`;
                     document.getElementById("list").insertAdjacentHTML('beforeend', row);
                 }
                 cpt++;
@@ -53,6 +60,13 @@
             }
             return list;
         };
+
+        function reset(){
+            let confirmation = confirm("Etes vous sûr de vouloir réinitialiser les données de conduite");
+            if(confirmation){
+                localStorage.removeItem('listeConduite');
+            }
+        }
 
     </script>
     <style>
@@ -107,10 +121,7 @@
             height: 60px;
             background-color: #3498db;
             color: white;
-        }
-        .foot{
-            display: flex;
-            justify-content: space-between;
+            text-align: center;
         }
         input,textarea, select{
             margin-bottom: 10pt;
@@ -119,9 +130,11 @@
             box-sizing: border-box;
         }
         table {
-            width: 100vh;
+            width: 100%;
+            margin: 0 auto;
             border-collapse: collapse;
             margin-bottom: 20px;
+            align-items: center;
         }
         
         th, td {
@@ -135,15 +148,60 @@
         .grayLigne{
             background-color: #f2f2f2;
         }
-        
+        .resetButton{
+            width: 200px;
+            height: 50px;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
 
-        @media screen and (max-width: 600px) {
-            header{
+        @media screen and (max-width: 750px) {
+            header {
                 flex-direction: column;
-                gap: 10;
+                gap: 10px;
             }
-            header button{
-                width: 90%;
+
+            .lastButton {
+                margin-bottom: 20px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+            footer p{
+                font-size: 14px;
+            }
+        }
+        @media screen and (max-width: 500px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .lastButton {
+                margin-bottom: 20px;
+            }
+
+            table {
+                font-size: 8px;
+            }
+
+            th, td {
+                padding: 4px;
+            }
+            footer p{
+                font-size: 14px;
             }
         }
     </style>
@@ -155,12 +213,13 @@
             <button>Formulaire</button>
         </a>
         <a href="bilan.html">
-            <button>bilan</button>
+            <button>Bilan</button>
         </a>
         <a href="seance.html">
-            <button>Liste des séances</button>
+            <button class="lastButton">Séances</button>
         </a>
     </header>
+    <button onclick="reset()" class="resetButton">Réinitialiser l'application</button>
     <table>
         <thead>
             <tr>
@@ -180,10 +239,7 @@
         </tbody>
     </table>
     <footer>
-        <div class="foot">
-            <div class="foot1"><p>Eros Mallet--Covic</p></div>
-            <div class="foot2"><p>Etudiant a l'université de strasbourg</p></div>
-        </div>
+        <p>Eros Mallet--Covic, Etudiant à l'université de Strasbourg</p>
     </footer>
 </body>
 </html>
